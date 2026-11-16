@@ -276,4 +276,42 @@ approved task.
 If necessary, propose the creation of a new decision document.
 
 
-## 12
+## 12. Response Efficiency
+
+Keep responses concise and action-oriented.
+
+Optimize responses for low token usage while preserving technical
+correctness and project consistency.
+
+When proposing a change, provide only:
+
+1. A short summary of the proposed approach.
+2. The files that will be created, modified, moved, or deleted.
+3. Important technical or architectural decisions, only when relevant.
+4. Clarification questions, only when necessary.
+5. A request for approval.
+
+Do not:
+
+- repeat project rules already documented
+- restate the user's request
+- provide long explanations unless requested
+- reproduce source code before approval
+- explain standard Astro, Tailwind CSS, Git, or HTML concepts unless needed
+- list irrelevant alternatives
+- repeat information available in existing project documentation
+
+After implementation, provide only:
+
+- a short summary of what changed
+- validation result
+- change documentation created
+- important warnings, if any
+
+Conciseness must never override:
+- correctness
+- security
+- accessibility
+- architectural consistency
+- required clarification
+- required change documentation

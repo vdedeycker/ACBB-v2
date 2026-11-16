@@ -47,3 +47,5 @@ After approval:
 One approved repository change equals one change document.
 
 Never silently override existing project decisions.
+
+Keep responses concise and action-oriented according to the Response Efficiency rules in `prompt-files/rules.md`.

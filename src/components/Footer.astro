@@ -1,0 +1,64 @@
+---
+interface FooterItem {
+  label: string;
+}
+
+interface FooterGroup {
+  title: string;
+  items: FooterItem[];
+}
+
+const footerGroups: FooterGroup[] = [
+  {
+    title: "En pratique",
+    items: [
+      { label: "Entraînements" },
+      { label: "Rejoindre l'ACBB" },
+      { label: "Compétitions" },
+      { label: "Événements ACBB" },
+    ],
+  },
+  {
+    title: "Le club",
+    items: [
+      { label: "Le club" },
+      { label: "Handisport" },
+      { label: "Vie du club" },
+      { label: "Partenaires" },
+      { label: "Contact" },
+    ],
+  },
+  {
+    title: "Informations",
+    items: [
+      { label: "Documents du club" },
+      { label: "Règlement intérieur" },
+      { label: "Confidentialité" },
+    ],
+  },
+];
+---
+
+<footer class="bg-acbb-ink text-acbb-white">
+  <div class="site-container py-10 md:py-12">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {footerGroups.map((group) => (
+        <section aria-label={group.title}>
+          <h2 class="mb-3 text-base font-semibold tracking-normal">
+            {group.title}
+          </h2>
+          <ul class="m-0 list-none space-y-1 p-0 text-acbb-white/80">
+            {group.items.map((item) => (
+              <li class="py-1">{item.label}</li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+
+    <div class="mt-8 border-t border-acbb-white/20 pt-5 text-sm text-acbb-white/80">
+      <p class="m-0">ACBB</p>
+      <p class="mt-1 mb-0">© {new Date().getFullYear()} ACBB</p>
+    </div>
+  </div>
+</footer>

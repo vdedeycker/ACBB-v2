@@ -1,0 +1,118 @@
+---
+interface NavigationItem {
+  label: string;
+  href?: string;
+}
+
+const primaryNavigation: NavigationItem[] = [
+  { label: "Accueil", href: "/" },
+  { label: "Entraînements" },
+  { label: "Le club" },
+  { label: "Compétitions" },
+  { label: "Événements ACBB" },
+];
+
+const isHome = Astro.url.pathname === "/";
+---
+
+<header class="border-b border-acbb-ink/10 bg-acbb-beige">
+  <div class="site-container flex min-h-20 items-center justify-between gap-3 py-3">
+    <a href="/" aria-label="ACBB - Accueil" class="shrink-0 rounded-sm">
+      <img
+        src="/images/logo_acbb.jpg"
+        alt="ACBB"
+        width="80"
+        height="80"
+        class="h-16 w-16 object-contain"
+      />
+    </a>
+
+    <nav aria-label="Navigation principale" class="hidden items-center gap-2 lg:flex">
+      {primaryNavigation.map((item) =>
+        item.href ? (
+          <a
+            href={item.href}
+            aria-current={isHome ? "page" : undefined}
+            class:list={[
+              "inline-flex min-h-11 items-center px-2 font-semibold no-underline",
+              isHome
+                ? "text-acbb-red-hover underline decoration-2 underline-offset-8"
+                : "text-acbb-ink hover:text-acbb-red-hover",
+            ]}
+          >
+            {item.label}
+          </a>
+        ) : (
+          <span class="inline-flex min-h-11 items-center px-2 text-acbb-ink">
+            {item.label}
+          </span>
+        ),
+      )}
+    </nav>
+
+    <span
+      class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-acbb-red-hover px-4 py-2 font-semibold text-acbb-white"
+    >
+      Rejoindre l'ACBB
+    </span>
+
+    <details class="relative shrink-0 lg:hidden">
+      <summary
+        class="flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-acbb-ink/20 px-4 font-semibold text-acbb-ink focus-visible:outline"
+      >
+        <span>Menu</span>
+        <svg
+          class="menu-chevron h-4 w-4"
+          viewBox="0 0 20 20"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="m5 7.5 5 5 5-5"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </summary>
+      <nav
+        aria-label="Navigation principale"
+        class="absolute right-0 z-10 mt-2 w-72 max-w-[calc(100vw-2rem)] rounded-2xl border border-acbb-ink/10 bg-acbb-white p-3"
+      >
+        <ul class="m-0 list-none p-0">
+          {primaryNavigation.map((item) =>
+            item.href ? (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={isHome ? "page" : undefined}
+                  class:list={[
+                    "flex min-h-11 items-center rounded-lg px-3 py-2 font-semibold",
+                    isHome
+                      ? "text-acbb-red-hover underline decoration-2 underline-offset-4"
+                      : "text-acbb-ink",
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ) : (
+              <li>
+                <span class="flex min-h-11 items-center px-3 py-2 text-acbb-ink">
+                  {item.label}
+                </span>
+              </li>
+            ),
+          )}
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  details[open] .menu-chevron {
+    transform: rotate(180deg);
+  }
+</style>

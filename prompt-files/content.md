@@ -45,6 +45,18 @@ Avoid:
 - overly promotional language
 - unnecessary repetition
 
+### French usage of "handisport"
+
+Write "handisport" as a common French noun:
+
+- Use "Handisport" when it begins a heading, title or sentence, or when it is
+  used as a standalone title, navigation label, category or UI label.
+- Use "handisport" inside a sentence.
+
+This editorial rule applies to public-facing copy. Technical identifiers,
+filenames and directory names may remain lowercase or otherwise
+implementation-specific.
+
 
 ## Content Hierarchy
 

@@ -16,14 +16,14 @@ const isHome = Astro.url.pathname === "/";
 ---
 
 <header class="border-b border-acbb-ink/10 bg-acbb-beige">
-  <div class="site-container flex min-h-20 items-center justify-between gap-3 py-3">
+  <div class="site-container flex min-h-20 items-center justify-between gap-1 py-3 sm:gap-3">
     <a href="/" aria-label="ACBB - Accueil" class="shrink-0 rounded-sm">
       <img
         src="/images/logo_acbb.jpg"
         alt="ACBB"
         width="80"
         height="80"
-        class="h-16 w-16 object-contain"
+        class="h-20 w-20 object-contain sm:h-20 sm:w-20 lg:h-20 lg:w-20"
       />
     </a>
 
@@ -51,14 +51,14 @@ const isHome = Astro.url.pathname === "/";
     </nav>
 
     <span
-      class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-acbb-red-hover px-4 py-2 font-semibold text-acbb-white"
+      class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-acbb-red-hover px-2 py-2 font-semibold text-acbb-white sm:px-4"
     >
       Rejoindre l'ACBB
     </span>
 
     <details class="relative shrink-0 lg:hidden">
       <summary
-        class="flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-acbb-ink/20 px-4 font-semibold text-acbb-ink focus-visible:outline"
+        class="flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-acbb-ink/20 px-3 font-semibold text-acbb-ink focus-visible:outline sm:px-4"
       >
         <span>Menu</span>
         <svg
@@ -78,7 +78,7 @@ const isHome = Astro.url.pathname === "/";
       </summary>
       <nav
         aria-label="Navigation principale"
-        class="absolute right-0 z-10 mt-2 w-72 max-w-[calc(100vw-2rem)] rounded-2xl border border-acbb-ink/10 bg-acbb-white p-3"
+        class="absolute right-0 z-10 mt-2 w-72 rounded-2xl border border-acbb-ink/10 bg-acbb-white p-3"
       >
         <ul class="m-0 list-none p-0">
           {primaryNavigation.map((item) =>

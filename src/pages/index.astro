@@ -2,99 +2,133 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Fondations visuelles | ACBB">
-  <section class="section-space">
-    <div class="site-container">
-      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.12em] text-acbb-red-hover">
-        Système visuel
-      </p>
-      <h1 class="max-w-4xl">Une base claire pour le site ACBB</h1>
-      <p class="mt-6 max-w-2xl text-lg">
-        Une fondation simple, lisible et accessible pour les prochaines pages.
-      </p>
-      <a class="button button--primary mt-8" href="#interactions">
-        Voir les états interactifs
-      </a>
+<BaseLayout
+  title="ACBB - Athletic Club Bernissart-Beloeil"
+  description="Découvrez l'athlétisme à l'ACBB : entraînements, jeunes, handisport, compétitions et événements."
+>
+  <section class="overflow-hidden bg-acbb-beige" aria-labelledby="hero-heading">
+    <div class="site-container grid items-center gap-8 py-10 md:py-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:py-16">
+      <div class="max-w-xl">
+        <p class="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-acbb-red-hover">
+          Athletic Club Bernissart-Beloeil
+        </p>
+        <h1 id="hero-heading">L'athlétisme pour toutes et tous.</h1>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <span class="future-action future-action--primary">Voir les entraînements</span>
+          <span class="future-action">Rejoindre l'ACBB</span>
+        </div>
+      </div>
+      <img
+        src="/images/home/acbb-young-athlete-hero.jpg"
+        alt="Jeune athlète ACBB en pleine course pendant une compétition"
+        width="2048"
+        height="1363"
+        fetchpriority="high"
+        decoding="async"
+        class="homepage-image aspect-[4/3] w-full object-cover object-[60%_center]"
+      />
     </div>
   </section>
 
-  <section class="section-space bg-acbb-white" aria-labelledby="colors-heading">
-    <div class="site-container">
-      <h2 id="colors-heading">Couleurs</h2>
-      <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <li class="rounded-2xl border border-acbb-ink/10 p-4">
-          <div class="h-20 rounded-xl bg-acbb-red" aria-hidden="true"></div>
-          <p class="mt-3 font-semibold">Rouge ACBB</p>
-          <p class="text-sm text-acbb-ink/75">#D94A4A</p>
-        </li>
-        <li class="rounded-2xl border border-acbb-ink/10 p-4">
-          <div class="h-20 rounded-xl bg-acbb-red-hover" aria-hidden="true"></div>
-          <p class="mt-3 font-semibold">Rouge foncé</p>
-          <p class="text-sm text-acbb-ink/75">#C63F3F</p>
-        </li>
-        <li class="rounded-2xl border border-acbb-ink/10 p-4">
-          <div class="h-20 rounded-xl bg-acbb-soft-red" aria-hidden="true"></div>
-          <p class="mt-3 font-semibold">Rouge doux</p>
-          <p class="text-sm text-acbb-ink/75">#F8E5E3</p>
-        </li>
-        <li class="rounded-2xl border border-acbb-ink/10 p-4">
-          <div class="h-20 rounded-xl bg-acbb-beige" aria-hidden="true"></div>
-          <p class="mt-3 font-semibold">Beige chaud</p>
-          <p class="text-sm text-acbb-ink/75">#FCF5EB</p>
-        </li>
-        <li class="rounded-2xl border border-acbb-ink/10 p-4">
-          <div class="h-20 rounded-xl bg-acbb-white ring-1 ring-inset ring-acbb-ink/10" aria-hidden="true"></div>
-          <p class="mt-3 font-semibold">Blanc</p>
-          <p class="text-sm text-acbb-ink/75">#FFFFFF</p>
-        </li>
-        <li class="rounded-2xl border border-acbb-ink/10 p-4">
-          <div class="h-20 rounded-xl bg-acbb-ink" aria-hidden="true"></div>
-          <p class="mt-3 font-semibold">Encre</p>
-          <p class="text-sm text-acbb-ink/75">#111B21</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section-space" aria-labelledby="type-heading">
-    <div class="site-container">
-      <h2 id="type-heading">Typographie</h2>
-      <div class="mt-8 space-y-6">
-        <h3>Une hiérarchie simple et lisible</h3>
-        <p class="max-w-2xl">
-          La typographie système garde le site rapide et lisible sur chaque
-          appareil. Le corps de texte conserve une taille minimale de 16 pixels.
+  <section class="section-space bg-acbb-white" aria-labelledby="training-heading">
+    <div class="site-container grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+      <div class="order-2 lg:order-1">
+        <p class="mb-3 font-bold text-acbb-red-hover">Entraînements</p>
+        <h2 id="training-heading">Grandir, progresser et prendre plaisir à courir</h2>
+        <p class="mt-5 max-w-xl">
+          L'ACBB accueille différentes pratiques de l'athlétisme, du sport
+          jeune aux disciplines plus spécifiques.
         </p>
-        <p>
-          <a href="#interactions">Exemple de lien avec un libellé explicite</a>
-        </p>
+        <ul class="mt-6 grid gap-2 sm:grid-cols-2" aria-label="Formules d'entraînement">
+          <li class="rounded-full bg-acbb-beige px-4 py-3 font-semibold">École des jeunes</li>
+          <li class="rounded-full bg-acbb-beige px-4 py-3 font-semibold">Sprint / haies / sauts</li>
+          <li class="rounded-full bg-acbb-beige px-4 py-3 font-semibold">Demi-fond</li>
+          <li class="rounded-full bg-acbb-beige px-4 py-3 font-semibold">Handisport</li>
+        </ul>
+        <span class="future-action mt-8">Voir les entraînements</span>
+      </div>
+      <div class="order-1 lg:order-2">
+        <img
+          src="/images/training/track-training-session.jpg"
+          alt="Jeune athlète suivant un exercice sur la piste"
+          width="1600"
+          height="1200"
+          loading="lazy"
+          decoding="async"
+          class="homepage-image aspect-[4/3] w-full object-cover object-center"
+        />
       </div>
     </div>
   </section>
 
-  <section
-    class="section-space bg-acbb-white"
-    aria-labelledby="spacing-heading"
-  >
-    <div class="site-container">
-      <h2 id="spacing-heading">Espacement et conteneur</h2>
-      <p class="mt-6 max-w-2xl">
-        Les sections respirent et leur contenu reste centré dans un conteneur
-        qui s’adapte de l’écran mobile au grand écran.
-      </p>
+  <section class="section-space" aria-labelledby="handisport-heading">
+    <div class="site-container grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+      <img
+        src="/images/handisport/handisport-athletes.jpg"
+        alt="Athlètes pratiquant le handisport réunis sur une piste d'athlétisme"
+        width="2048"
+        height="1363"
+        loading="lazy"
+        decoding="async"
+        class="homepage-image aspect-[4/3] w-full object-cover object-center"
+      />
+      <div>
+        <p class="mb-3 font-bold text-acbb-red-hover">Handisport</p>
+        <h2 id="handisport-heading">Une pratique sportive ouverte à chacun</h2>
+        <p class="mt-5 max-w-xl">
+          Le handisport occupe une place importante à l'ACBB. Il permet de
+          partager les valeurs de l'athlétisme dans une activité dédiée à
+          l'inclusion.
+        </p>
+        <span class="future-action mt-8">Découvrir le handisport</span>
+      </div>
     </div>
   </section>
 
-  <section id="interactions" class="section-space" aria-labelledby="interactions-heading">
-    <div class="site-container">
-      <h2 id="interactions-heading">États interactifs</h2>
-      <p class="mt-6 max-w-2xl">
-        Utilisez la touche Tab pour vérifier le focus visible et les liens
- soulignés.
-      </p>
-      <a class="button button--primary mt-6" href="#colors-heading">
-        Revenir aux couleurs
-      </a>
+  <section class="section-space bg-acbb-white" aria-labelledby="competitions-heading">
+    <div class="site-container grid items-center gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+      <div>
+        <p class="mb-3 font-bold text-acbb-red-hover">Compétitions</p>
+        <h2 id="competitions-heading">Se mesurer, progresser et représenter l'ACBB</h2>
+        <p class="mt-5 max-w-xl">
+          Les athlètes de l'ACBB participent à des compétitions. Les prochains
+          rendez-vous et une sélection de résultats seront proposés sur le
+          futur calendrier du club.
+        </p>
+        <span class="future-action mt-8">Voir les compétitions</span>
+      </div>
+      <img
+        src="/images/competitions/competition-start.jpg"
+        alt="Athlètes ACBB prenant le départ d'une course"
+        width="1718"
+        height="1145"
+        loading="lazy"
+        decoding="async"
+        class="homepage-image aspect-[16/10] w-full object-cover object-[center_38%]"
+      />
+    </div>
+  </section>
+
+  <section class="section-space" aria-labelledby="events-heading">
+    <div class="site-container grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+      <img
+        src="/images/events/acbb-event-athletes.webp"
+        alt="Athlètes vêtus aux couleurs de l'ACBB lors d'un événement"
+        width="720"
+        height="480"
+        loading="lazy"
+        decoding="async"
+        class="homepage-image aspect-[3/2] w-full object-cover"
+      />
+      <div>
+        <p class="mb-3 font-bold text-acbb-red-hover">Événements ACBB</p>
+        <h2 id="events-heading">Des rendez-vous qui font vivre le club</h2>
+        <p class="mt-5 max-w-xl">
+          L'ACBB organise ses propres événements sportifs, notamment La
+          Dinosaurienne et les 20 km de la Forêt de Belœil.
+        </p>
+        <span class="future-action mt-8">Voir les événements ACBB</span>
+      </div>
     </div>
   </section>
 </BaseLayout>

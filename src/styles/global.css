@@ -111,11 +111,183 @@
     background-color: var(--color-acbb-red-hover);
     color: var(--color-acbb-white);
   }
+
+  .training-finder {
+    border: 1px solid rgb(17 27 33 / 0.12);
+    border-radius: 1.25rem;
+    background-color: var(--color-acbb-beige);
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .birth-year-select {
+    width: min(100%, 22rem);
+    min-height: 3rem;
+    border: 1px solid rgb(17 27 33 / 0.35);
+    border-radius: 0.75rem;
+    background-color: var(--color-acbb-white);
+    padding: 0.75rem 2.5rem 0.75rem 0.75rem;
+    color: var(--color-acbb-ink);
+  }
+
+  .finder-result {
+    margin-top: 1.5rem;
+  }
+
+  .finder-season {
+    margin: 0 0 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-acbb-red-hover);
+  }
+
+  .finder-results-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .finder-session {
+    border-top: 1px solid rgb(17 27 33 / 0.12);
+    padding-top: 1rem;
+  }
+
+  .finder-session-domain {
+    margin: 0 0 0.25rem;
+    color: var(--color-acbb-red-hover);
+    font-weight: 700;
+  }
+
+  .finder-session h3 {
+    margin: 0 0 0.5rem;
+  }
+
+  .finder-session p {
+    margin: 0.35rem 0 0;
+  }
+
+  .finder-junior-note {
+    margin: 1rem 0 0;
+    border-left: 3px solid var(--color-acbb-red-hover);
+    padding: 0.25rem 0 0.25rem 0.75rem;
+  }
+
+  .training-domain {
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .training-domain > h3 {
+    margin-bottom: 1rem;
+  }
+
+  .training-session {
+    border-top: 1px solid rgb(17 27 33 / 0.14);
+    padding-block: 1.25rem;
+  }
+
+  .training-session-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .training-session-categories {
+    margin: 0.35rem 0 0;
+    color: rgb(17 27 33 / 0.72);
+  }
+
+  .training-session-details {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0 0;
+  }
+
+  .training-session-details div {
+    min-width: 0;
+  }
+
+  .training-session-details dt {
+    font-weight: 700;
+  }
+
+  .training-session-details dd {
+    margin: 0.25rem 0 0;
+  }
+
+  .training-session-note,
+  .training-pedagogy {
+    max-width: 48rem;
+  }
+
+  .training-session-note {
+    margin: 1rem 0 0;
+    border-left: 3px solid var(--color-acbb-red-hover);
+    padding-left: 0.75rem;
+  }
+
+  .training-pedagogy {
+    margin-top: 1rem;
+    border-radius: 1rem;
+    background-color: var(--color-acbb-beige);
+    padding: 1rem;
+  }
+
+  .training-pedagogy-label {
+    margin: 0 0 0.25rem;
+    color: var(--color-acbb-red-hover);
+    font-weight: 700;
+  }
+
+  .training-pedagogy p:last-child {
+    margin: 0.25rem 0 0;
+  }
+
+  .training-pedagogy ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .training-pedagogy li {
+    margin-top: 0.35rem;
+  }
+
+  .training-pedagogy-wide {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .training-stage-list {
+    display: grid;
+    gap: 0.5rem;
+  }
 }
 
 @media (min-width: 48rem) {
   .site-container {
     width: min(100% - 3rem, 72rem);
+  }
+
+  .finder-results-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .training-session {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    gap: 1.5rem;
+  }
+
+  .training-session-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .training-session-details div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .training-pedagogy-wide {
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
   }
 }
 

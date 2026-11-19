@@ -1,0 +1,172 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TrainingFinder from "../components/TrainingFinder.astro";
+import {
+  dltaStages,
+  getPublicTrainingCategories,
+  trainingSeason,
+} from "../data/training-seasons";
+import { trainingSessions } from "../data/training-sessions";
+
+const birthYears = Array.from({ length: 82 }, (_, index) => 2021 - index);
+const domains = [
+  "École des jeunes",
+  "Demi-fond",
+  "Sprint / haies / sauts",
+  "Perfectionnement / musculation",
+];
+
+const sessionsByDomain = (domain: string) =>
+  trainingSessions.filter((session) => session.domain === domain);
+
+const publicTrainingCategories = getPublicTrainingCategories();
+
+const categoryLabels = (categoryIds: string[]) =>
+  categoryIds
+    .map((id) => publicTrainingCategories.find((category) => category.id === id))
+    .filter(
+      (category, index, all) =>
+        category !== undefined &&
+        all.findIndex((item) => item?.id === category.id) === index,
+    )
+    .map((category) => category?.displayLabel ?? "")
+    .join(" · ");
+---
+
+<BaseLayout
+  title="Entraînements - ACBB"
+  description="Repérez la catégorie LBFA, trouvez les entraînements ACBB et consultez tous les horaires."
+>
+  <section class="training-hero bg-acbb-beige" aria-labelledby="training-page-heading">
+    <div class="site-container py-12 md:py-16">
+      <p class="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-acbb-red-hover">
+        Entraînements
+      </p>
+      <h1 id="training-page-heading">Trouver son entraînement</h1>
+      <p class="mt-5 max-w-2xl">
+        Tous les entraînements habituels ont lieu au Centre Omnisports du Préau,
+        à Bernissart.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-space bg-acbb-white" aria-label="Rechercher un entraînement">
+    <div class="site-container">
+      <TrainingFinder birthYears={birthYears} />
+    </div>
+  </section>
+
+  <section class="section-space" aria-labelledby="all-training-heading">
+    <div class="site-container">
+      <p class="mb-3 font-bold text-acbb-red-hover">Horaires habituels</p>
+      <h2 id="all-training-heading">Tous les entraînements</h2>
+
+      <div class="training-domains">
+        {domains.map((domain) => (
+          <section class="training-domain" aria-labelledby={`domain-${domain.replaceAll(/[^a-zA-Z0-9]/g, "-")}`}>
+            <h3 id={`domain-${domain.replaceAll(/[^a-zA-Z0-9]/g, "-")}`}>{domain}</h3>
+
+            {sessionsByDomain(domain).map((session) => (
+              <article class="training-session">
+                <div>
+                  <p class="training-session-title">{session.title}</p>
+                  {session.categories.length > 0 && (
+                    <p class="training-session-categories">
+                      {categoryLabels(session.categories)}
+                    </p>
+                  )}
+                </div>
+
+                <dl class="training-session-details">
+                  <div>
+                    <dt>Horaires</dt>
+                    {session.schedule.map((entry) => (
+                      <dd>
+                        {entry.day} : {entry.start}–{entry.end}
+                        {entry.coach && ` — ${entry.coach}`}
+                      </dd>
+                    ))}
+                  </div>
+                  <div>
+                    <dt>Coach(es)</dt>
+                    <dd>{session.coaches.join(", ")}</dd>
+                  </div>
+                  <div>
+                    <dt>Lieu</dt>
+                    <dd>{session.location}</dd>
+                  </div>
+                </dl>
+
+                {session.note && (
+                  <p class="training-session-note">{session.note}</p>
+                )}
+
+                <div class="training-pedagogy">
+                  <p class="training-pedagogy-label">Objectifs pédagogiques</p>
+                  <ul>
+                    {session.dltaStageIds.map((stageId) => {
+                      const stage = dltaStages.find((item) => item.id === stageId);
+                      return stage ? (
+                        <li>
+                          "{stage.label}" — {stage.ageRange}
+                        </li>
+                      ) : null;
+                    })}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-space bg-acbb-white" aria-labelledby="pedagogy-heading">
+    <div class="site-container training-pedagogy-wide">
+      <div>
+        <p class="mb-3 font-bold text-acbb-red-hover">Pédagogie</p>
+        <h2 id="pedagogy-heading">
+          Développement à Long Terme de l'Athlète (DLTA)
+        </h2>
+      </div>
+      <div>
+        <p>
+          Le résumé DLTA décrit une progression du plaisir de pratiquer vers
+          l’apprentissage de l’entraînement, puis la préparation et la pratique
+          de la compétition.
+        </p>
+        <ul class="mt-5 training-stage-list">
+          {dltaStages.map((stage) => (
+            <li>
+              « {stage.label} » — {stage.ageRange}
+            </li>
+          ))}
+          <li>Vie active</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-space" aria-labelledby="handisport-training-heading">
+    <div class="site-container">
+      <h2 id="handisport-training-heading">Handisport</h2>
+      <p class="mt-5 max-w-2xl">
+        La pratique du handisport fait partie de l’architecture du club.
+        Les horaires, catégories et coachs dédiés restent à confirmer avant toute publication.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-space bg-acbb-white" aria-labelledby="lbfa-heading">
+    <div class="site-container">
+      <h2 id="lbfa-heading">Référence officielle</h2>
+      <p class="mt-5">
+        Les catégories présentées correspondent à la saison 2026-2027.
+      </p>
+      <a class="button button--primary mt-5" href={trainingSeason.sourceHref}>
+        Consulter le tableau officiel des catégories LBFA
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,6 +1,7 @@
 ---
 interface FooterItem {
   label: string;
+  href?: string;
 }
 
 interface FooterGroup {
@@ -12,7 +13,7 @@ const footerGroups: FooterGroup[] = [
   {
     title: "En pratique",
     items: [
-      { label: "Entraînements" },
+      { label: "Entraînements", href: "/entrainements/" },
       { label: "Rejoindre l'ACBB" },
       { label: "Compétitions" },
       { label: "Événements ACBB" },
@@ -49,7 +50,18 @@ const footerGroups: FooterGroup[] = [
           </h2>
           <ul class="m-0 list-none space-y-1 p-0 text-acbb-white/80">
             {group.items.map((item) => (
-              <li class="py-1">{item.label}</li>
+              <li class="py-1">
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    class="inline-flex min-h-11 items-center text-acbb-white no-underline"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  item.label
+                )}
+              </li>
             ))}
           </ul>
         </section>

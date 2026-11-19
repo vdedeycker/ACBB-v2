@@ -1,0 +1,166 @@
+---
+import {
+  dltaStages,
+  getPublicTrainingCategories,
+  trainingSeason,
+} from "../data/training-seasons";
+import { trainingSessions } from "../data/training-sessions";
+
+interface Props {
+  birthYears: number[];
+}
+
+const { birthYears } = Astro.props;
+
+const publicTrainingCategories = getPublicTrainingCategories();
+
+const finderData = publicTrainingCategories.map((category) => ({
+  id: category.id,
+  displayLabel: category.displayLabel,
+  rangeMax: category.birthYearRange.max,
+  rangeMin: category.birthYearRange.min,
+}));
+
+const sessionsData = trainingSessions.map((session) => ({
+  id: session.id,
+  domain: session.domain,
+  title: session.title,
+  categories: session.categories,
+  discipline: session.discipline,
+  location: session.location,
+  coaches: session.coaches,
+  schedule: session.schedule,
+  standard: session.standard,
+  note: session.note,
+  dltaStageIds: session.dltaStageIds,
+}));
+---
+
+<section class="training-finder" aria-labelledby="finder-heading">
+  <div>
+    <p class="mb-3 font-bold text-acbb-red-hover">Trouver son entraînement</p>
+    <h2 id="finder-heading">Quelle est l'année de naissance de l'athlète ?</h2>
+  </div>
+
+  <div class="mt-6">
+    <label for="birth-year" class="mb-2 block font-semibold">
+      Année de naissance
+    </label>
+    <select
+      id="birth-year"
+      name="birth-year"
+      class="birth-year-select"
+      aria-describedby="finder-help finder-result"
+    >
+      <option value="">Choisir une année</option>
+      {birthYears.map((birthYear) => (
+        <option value={birthYear}>{birthYear}</option>
+      ))}
+    </select>
+    <p id="finder-help" class="mt-3 text-sm text-acbb-ink/75">
+      Cet outil est une orientation. Il ne remplace pas l'échange avec les coaches.
+    </p>
+  </div>
+
+  <div id="finder-result" class="finder-result" aria-live="polite" aria-atomic="true">
+    <p class="m-0 text-acbb-ink/75">
+      Choisissez une année pour voir les catégories et les entraînements habituels.
+    </p>
+  </div>
+</section>
+
+<script define:vars={{ finderData, sessionsData, seasonLabel: trainingSeason.label, dltaStages }}>
+  const birthYearSelect = document.querySelector("#birth-year");
+  const result = document.querySelector("#finder-result");
+
+  const matchesCategory = (category, birthYear) => {
+    if (category.rangeMax !== undefined) {
+      return birthYear <= category.rangeMax &&
+        (category.rangeMin === undefined || birthYear >= category.rangeMin);
+    }
+    return false;
+  };
+
+  const escapeHtml = (value) =>
+    String(value).replace(/[&<>"']/g, (character) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    })[character]);
+
+  const renderResult = () => {
+    const birthYear = Number(birthYearSelect.value);
+
+    if (!birthYear) {
+      result.innerHTML =
+        '<p class="m-0 text-acbb-ink/75">Choisissez une année pour voir les catégories et les entraînements habituels.</p>';
+      return;
+    }
+
+    const categories = finderData.filter((category) =>
+      matchesCategory(category, birthYear),
+    );
+
+    if (!categories.length) {
+      result.innerHTML =
+        '<p class="m-0">Aucune catégorie n’a été trouvée pour cette année dans la saison sélectionnée. Adressez-vous au club pour confirmation.</p>';
+      return;
+    }
+
+    const categoryIds = new Set(categories.map((category) => category.id));
+    const sessions = sessionsData.filter(
+      (session) =>
+        session.standard &&
+        session.categories.some((categoryId) => categoryIds.has(categoryId)),
+    );
+
+    const categoryNames = categories
+      .map((category) => escapeHtml(category.displayLabel))
+      .join(" / ");
+
+    const juniorNote =
+      categoryIds.has("juniors")
+        ? '<p class="finder-junior-note"><strong>Cas particulier des Juniors :</strong> les groupes demi-fond de Kevin et Sébastien peuvent convenir. La progression, le niveau et les coaches déterminent l’orientation.</p>'
+        : "";
+
+    const sessionMarkup = sessions
+      .map((session) => {
+        const schedule = session.schedule
+          .map((entry) => {
+            const coach = entry.coach ? ` — ${escapeHtml(entry.coach)}` : "";
+            return `${escapeHtml(entry.day)} : ${escapeHtml(entry.start)}–${escapeHtml(entry.end)}${coach}`;
+          })
+          .join("<br>");
+
+        const pedagogy = session.dltaStageIds
+          .map((stageId) => dltaStages.find((stage) => stage.id === stageId))
+          .filter((stage) => stage !== undefined)
+          .map((stage) => `« ${stage.label} » — ${stage.ageRange}`)
+          .join("<br>");
+
+        return `
+          <article class="finder-session">
+            <p class="finder-session-domain">${escapeHtml(session.domain)}</p>
+            <h3>${escapeHtml(session.title)}</h3>
+            <p>${schedule}</p>
+            <p><strong>Coach(es) :</strong> ${session.coaches.map(escapeHtml).join(", ")}</p>
+            <p><strong>Lieu :</strong> ${escapeHtml(session.location)}</p>
+            ${pedagogy ? `<p><strong>Objectifs pédagogiques :</strong><br>${pedagogy}</p>` : ""}
+          </article>
+        `;
+      })
+      .join("");
+
+    result.innerHTML = `
+      <p class="finder-season">${escapeHtml(seasonLabel)}</p>
+      <h3>Catégorie${categories.length > 1 ? "s" : ""} ACBB : ${categoryNames}</h3>
+      ${juniorNote}
+      <div class="finder-results-grid">${sessionMarkup}</div>
+    `;
+  };
+
+  birthYearSelect?.addEventListener("change", renderResult);
+</script>
+

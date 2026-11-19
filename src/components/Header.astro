@@ -6,13 +6,13 @@ interface NavigationItem {
 
 const primaryNavigation: NavigationItem[] = [
   { label: "Accueil", href: "/" },
-  { label: "Entraînements" },
+  { label: "Entraînements", href: "/entrainements/" },
   { label: "Le club" },
   { label: "Compétitions" },
   { label: "Événements ACBB" },
 ];
 
-const isHome = Astro.url.pathname === "/";
+const isActive = (href?: string) => href && Astro.url.pathname === href;
 ---
 
 <header class="border-b border-acbb-ink/10 bg-acbb-beige">
@@ -32,10 +32,10 @@ const isHome = Astro.url.pathname === "/";
         item.href ? (
           <a
             href={item.href}
-            aria-current={isHome ? "page" : undefined}
+            aria-current={isActive(item.href) ? "page" : undefined}
             class:list={[
               "inline-flex min-h-11 items-center px-2 font-semibold no-underline",
-              isHome
+              isActive(item.href)
                 ? "text-acbb-red-hover underline decoration-2 underline-offset-8"
                 : "text-acbb-ink hover:text-acbb-red-hover",
             ]}
@@ -86,10 +86,10 @@ const isHome = Astro.url.pathname === "/";
               <li>
                 <a
                   href={item.href}
-                  aria-current={isHome ? "page" : undefined}
+                  aria-current={isActive(item.href) ? "page" : undefined}
                   class:list={[
                     "flex min-h-11 items-center rounded-lg px-3 py-2 font-semibold",
-                    isHome
+                    isActive(item.href)
                       ? "text-acbb-red-hover underline decoration-2 underline-offset-4"
                       : "text-acbb-ink",
                   ]}

@@ -128,7 +128,7 @@ const peopleData = people.map((person) => ({
 
     const juniorNote =
       categoryIds.has("juniors")
-        ? `<p class="finder-junior-note"><strong>Cas particulier des Juniors :</strong> les groupes demi-fond de ${escapeHtml(peopleData.find((person) => person.id === "kevin-brouillard")?.name ?? "Kévin Brouillard")} et ${escapeHtml(peopleData.find((person) => person.id === "sebastien-colmant-midol")?.name ?? "Sébastien Colmant-Midol")} peuvent convenir. La progression, le niveau et les coaches déterminent l’orientation.</p>`
+        ? `<p class="finder-junior-note"><strong>Cas particulier des Juniors :</strong> les groupes demi-fond de ${escapeHtml(peopleData.find((person) => person.id === "kevin-brouillard")?.name ?? "Kevin Brouillard")} et ${escapeHtml(peopleData.find((person) => person.id === "sebastien-colmant-midol")?.name ?? "Sébastien Colmant-Midol")} peuvent convenir. La progression, le niveau et les coaches déterminent l’orientation.</p>`
         : "";
 
     const sessionMarkup = sessions

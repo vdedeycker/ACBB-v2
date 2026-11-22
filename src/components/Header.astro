@@ -19,14 +19,14 @@ const isActive = (href?: string) => href && (
 ---
 
 <header class="border-b border-acbb-ink/10 bg-acbb-beige">
-  <div class="site-container flex min-h-20 items-center justify-between gap-1 py-3 sm:gap-3">
+  <div class="site-container flex min-h-20 items-center justify-between gap-0 py-3 sm:gap-2 lg:gap-3">
     <a href="/" aria-label="ACBB - Accueil" class="shrink-0 rounded-sm">
       <img
-        src="/images/logo_acbb.jpg"
+        src="/images/branding/logo-acbb.png"
         alt="ACBB"
-        width="80"
-        height="80"
-        class="h-20 w-20 object-contain sm:h-20 sm:w-20 lg:h-20 lg:w-20"
+        width="1037"
+        height="803"
+        class="h-auto w-20 object-contain sm:w-24"
       />
     </a>
 
@@ -54,16 +54,33 @@ const isActive = (href?: string) => href && (
     </nav>
 
     <a
+      href="https://www.facebook.com/profile.php?id=100057181820430"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Suivre l’ACBB sur Facebook"
+      class="inline-flex size-11 shrink-0 items-center justify-center rounded-full text-acbb-ink no-underline hover:bg-acbb-ink/5"
+    >
+      <img
+        src="/images/logo_facebook.png"
+        alt=""
+        width="20"
+        height="20"
+        aria-hidden="true"
+        class="size-5 rounded-sm"
+      />
+    </a>
+
+    <a
       href="/rejoindre/"
       aria-current={Astro.url.pathname === "/rejoindre/" ? "page" : undefined}
-      class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-acbb-red-hover px-2 py-2 font-semibold text-acbb-white no-underline sm:px-4"
+      class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-acbb-red-hover px-1 py-2 font-semibold text-acbb-white no-underline sm:px-4"
     >
       Rejoindre l'ACBB
     </a>
 
     <details class="relative shrink-0 lg:hidden">
       <summary
-        class="flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-acbb-ink/20 px-3 font-semibold text-acbb-ink focus-visible:outline sm:px-4"
+        class="flex min-h-11 cursor-pointer list-none items-center gap-1 rounded-full border border-acbb-ink/20 px-1 font-semibold text-acbb-ink focus-visible:outline sm:gap-2 sm:px-4"
       >
         <span>Menu</span>
         <svg

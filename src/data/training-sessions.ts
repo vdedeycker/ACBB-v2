@@ -83,7 +83,7 @@ export const trainingSessions: TrainingSession[] = [
   },
   {
     id: "sprint-haies-sauts",
-    domain: "Sprint / haies / sauts",
+    domain: "Sprint/haies/sauts",
     title: "Sprint, haies et sauts",
     categories: [
       "cadets",
@@ -105,7 +105,7 @@ export const trainingSessions: TrainingSession[] = [
   },
   {
     id: "perfectionnement-musculation",
-    domain: "Perfectionnement / musculation",
+    domain: "Perfectionnement/musculation",
     title: "Préparation à la compétition",
     categories: ["cadets", "scolaires"],
     discipline: "Préparation à la compétition / musculation",

@@ -5,6 +5,7 @@ import {
   trainingSeason,
 } from "../data/training-seasons";
 import { trainingSessions } from "../data/training-sessions";
+import { people } from "../data/people";
 
 interface Props {
   birthYears: number[];
@@ -33,6 +34,11 @@ const sessionsData = trainingSessions.map((session) => ({
   standard: session.standard,
   note: session.note,
   dltaStageIds: session.dltaStageIds,
+}));
+
+const peopleData = people.map((person) => ({
+  id: person.id,
+  name: [person.firstName, person.lastName].filter(Boolean).join(" "),
 }));
 ---
 
@@ -69,7 +75,7 @@ const sessionsData = trainingSessions.map((session) => ({
   </div>
 </section>
 
-<script define:vars={{ finderData, sessionsData, seasonLabel: trainingSeason.label, dltaStages }}>
+<script define:vars={{ finderData, sessionsData, peopleData, seasonLabel: trainingSeason.label, dltaStages }}>
   const birthYearSelect = document.querySelector("#birth-year");
   const result = document.querySelector("#finder-result");
 
@@ -122,14 +128,16 @@ const sessionsData = trainingSessions.map((session) => ({
 
     const juniorNote =
       categoryIds.has("juniors")
-        ? '<p class="finder-junior-note"><strong>Cas particulier des Juniors :</strong> les groupes demi-fond de Kevin et Sébastien peuvent convenir. La progression, le niveau et les coaches déterminent l’orientation.</p>'
+        ? `<p class="finder-junior-note"><strong>Cas particulier des Juniors :</strong> les groupes demi-fond de ${escapeHtml(peopleData.find((person) => person.id === "kevin-brouillard")?.name ?? "Kévin Brouillard")} et ${escapeHtml(peopleData.find((person) => person.id === "sebastien-colmant-midol")?.name ?? "Sébastien Colmant-Midol")} peuvent convenir. La progression, le niveau et les coaches déterminent l’orientation.</p>`
         : "";
 
     const sessionMarkup = sessions
       .map((session) => {
         const schedule = session.schedule
           .map((entry) => {
-            const coach = entry.coach ? ` — ${escapeHtml(entry.coach)}` : "";
+            const coach = entry.coachId
+              ? ` — ${escapeHtml(peopleData.find((person) => person.id === entry.coachId)?.name ?? entry.coachId)}`
+              : "";
             return `${escapeHtml(entry.day)} : ${escapeHtml(entry.start)}–${escapeHtml(entry.end)}${coach}`;
           })
           .join("<br>");
@@ -145,7 +153,7 @@ const sessionsData = trainingSessions.map((session) => ({
             <p class="finder-session-domain">${escapeHtml(session.domain)}</p>
             <h3>${escapeHtml(session.title)}</h3>
             <p>${schedule}</p>
-            <p><strong>Coach(es) :</strong> ${session.coaches.map(escapeHtml).join(", ")}</p>
+            <p><strong>Coach(es) :</strong> ${session.coaches.map((coachId) => escapeHtml(peopleData.find((person) => person.id === coachId)?.name ?? coachId)).join(", ")}</p>
             <p><strong>Lieu :</strong> ${escapeHtml(session.location)}</p>
             ${pedagogy ? `<p><strong>Objectifs pédagogiques :</strong><br>${pedagogy}</p>` : ""}
           </article>

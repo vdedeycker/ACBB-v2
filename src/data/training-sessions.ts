@@ -2,7 +2,7 @@ export interface TrainingScheduleEntry {
   day: string;
   start: string;
   end: string;
-  coach?: string;
+  coachId?: string;
 }
 
 export interface TrainingSession {
@@ -27,7 +27,7 @@ export const trainingSessions: TrainingSession[] = [
     categories: ["kangourous", "benjamins", "pupilles"],
     discipline: "École d'athlétisme",
     location: "Centre Omnisports du Préau, Bernissart",
-    coaches: ["Nicolas"],
+    coaches: ["nicolas-libbrecht"],
     schedule: [
       { day: "Lundi", start: "18:00", end: "19:00" },
       { day: "Mercredi", start: "18:00", end: "19:00" },
@@ -42,7 +42,7 @@ export const trainingSessions: TrainingSession[] = [
     categories: ["minimes"],
     discipline: "École d'athlétisme",
     location: "Centre Omnisports du Préau, Bernissart",
-    coaches: ["Victor"],
+    coaches: ["victor-libbrecht"],
     schedule: [
       { day: "Lundi", start: "18:00", end: "19:00" },
       { day: "Mercredi", start: "18:00", end: "19:00" },
@@ -57,7 +57,7 @@ export const trainingSessions: TrainingSession[] = [
     categories: ["cadets", "scolaires", "juniors"],
     discipline: "Demi-fond",
     location: "Centre Omnisports du Préau, Bernissart",
-    coaches: ["Kevin"],
+    coaches: ["kevin-brouillard"],
     schedule: [
       { day: "Lundi", start: "18:00", end: "19:30" },
       { day: "Mercredi", start: "18:00", end: "19:30" },
@@ -73,7 +73,7 @@ export const trainingSessions: TrainingSession[] = [
     categories: ["juniors", "seniors", "masters"],
     discipline: "Demi-fond",
     location: "Centre Omnisports du Préau, Bernissart",
-    coaches: ["Sébastien"],
+    coaches: ["sebastien-colmant-midol"],
     schedule: [
       { day: "Lundi", start: "18:00", end: "19:30" },
       { day: "Mercredi", start: "18:00", end: "19:30" },
@@ -94,11 +94,11 @@ export const trainingSessions: TrainingSession[] = [
     ],
     discipline: "Sprint, haies et sauts",
     location: "Centre Omnisports du Préau, Bernissart",
-    coaches: ["Alissa", "Corentin"],
+    coaches: ["alissa", "corentin-campener"],
     schedule: [
-      { day: "Lundi", start: "18:00", end: "19:30", coach: "Alissa" },
-      { day: "Mercredi", start: "18:00", end: "19:30", coach: "Alissa" },
-      { day: "Vendredi", start: "17:45", end: "19:00", coach: "Corentin" },
+      { day: "Lundi", start: "18:00", end: "19:30", coachId: "alissa" },
+      { day: "Mercredi", start: "18:00", end: "19:30", coachId: "alissa" },
+      { day: "Vendredi", start: "17:45", end: "19:00", coachId: "corentin-campener" },
     ],
     standard: true,
     dltaStageIds: ["sentraîner", "competition", "gagner"],
@@ -110,7 +110,7 @@ export const trainingSessions: TrainingSession[] = [
     categories: ["cadets", "scolaires"],
     discipline: "Préparation à la compétition / musculation",
     location: "Centre Omnisports du Préau, Bernissart",
-    coaches: ["Kevin"],
+    coaches: ["kevin-brouillard"],
     schedule: [{ day: "Dimanche", start: "11:00", end: "12:00" }],
     standard: false,
     note:

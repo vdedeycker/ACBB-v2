@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PersonCard from "../components/PersonCard.astro";
+import { people } from "../data/people";
+
+const committee = people.filter((person) => person.governanceRoles.length > 0);
+const coaches = people.filter((person) => person.coachingAssignments.length > 0);
+---
+
+<BaseLayout
+  title="Le club - ACBB"
+  description="Découvrez le comité et les entraîneurs de l'Athletic Club Bernissart-Beloeil."
+>
+  <section class="club-hero bg-acbb-beige" aria-labelledby="club-page-heading">
+    <div class="site-container py-12 md:py-16">
+      <p class="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-acbb-red-hover">
+        Le club
+      </p>
+      <h1 id="club-page-heading">Les personnes qui font vivre l'ACBB</h1>
+      <p class="mt-5 max-w-2xl">
+        Découvrez le comité et l'équipe d'entraîneurs qui encadrent les
+        différents groupes du club au quotidien.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-space bg-acbb-white" aria-labelledby="committee-heading">
+    <div class="site-container">
+      <p class="mb-3 font-bold text-acbb-red-hover">Gouvernance</p>
+      <h2 id="committee-heading">Le comité</h2>
+      <div class="people-grid committee-grid mt-8">
+        {committee.map((person) => (
+          <PersonCard person={person} context="committee" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-space" aria-labelledby="coaches-heading">
+    <div class="site-container">
+      <p class="mb-3 font-bold text-acbb-red-hover">Encadrement sportif</p>
+      <h2 id="coaches-heading">Les entraîneurs</h2>
+      <p class="mt-5 max-w-2xl">
+        Les affectations ci-dessous donnent une vue d'ensemble des domaines
+        encadrés. Les horaires restent disponibles sur la page
+        <a href="/entrainements/">Entraînements</a>.
+      </p>
+      <div class="coach-grid">
+        {coaches.map((person) => (
+          <PersonCard person={person} context="coach" />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

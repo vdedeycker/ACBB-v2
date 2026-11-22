@@ -56,6 +56,17 @@ Do not maintain generated `dist/` assets manually.
 Future project-managed asset names should be lowercase, descriptive,
 and hyphen-separated.
 
+## Public People and Contact Information
+
+People use one shared identity across committee, coaching and future
+organizational roles.
+
+Governance roles, operational responsibilities, commission memberships and
+coaching assignments remain distinct fields. Public committee emails may be
+displayed. Public phone numbers are permitted only for the Président,
+Vice-président and Secrétaire. Coach phone numbers must not be inferred from
+committee roles or other public identities.
+
 
 ## Pending Content
 

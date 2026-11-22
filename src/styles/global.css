@@ -366,6 +366,130 @@
     margin: 0.25rem 0 0;
     overflow-wrap: anywhere;
   }
+
+  .committee-list,
+  .coach-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .committee-list {
+    margin-top: 2.5rem;
+  }
+
+  .committee-role {
+    border-top: 1px solid rgb(17 27 33 / 0.14);
+    padding-top: 1.25rem;
+  }
+
+  .committee-role > h3 {
+    margin: 0 0 1rem;
+  }
+
+  .committee-members,
+  .coach-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .person-card {
+    display: grid;
+    grid-template-columns: 5.25rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    min-width: 0;
+    height: 100%;
+    border: 1px solid rgb(17 27 33 / 0.12);
+    border-radius: 1.25rem;
+    background-color: var(--color-acbb-white);
+    padding: clamp(1rem, 3vw, 1.25rem);
+  }
+
+  .person-card-photo {
+    width: 5.25rem;
+    height: 5.25rem;
+    border-radius: 1.25rem;
+    object-fit: cover;
+  }
+
+  .person-card h3 {
+    margin: 0;
+  }
+
+  .person-card-role {
+    margin: 0.35rem 0 0;
+    color: var(--color-acbb-red-hover);
+    font-weight: 700;
+  }
+
+  .person-card-responsibility {
+    margin: 0.5rem 0 0;
+    font-weight: 700;
+  }
+
+  .person-card-commission {
+    margin: 0.25rem 0 0;
+  }
+
+  .person-card-email {
+    display: inline-block;
+    max-width: 100%;
+    margin-top: 0.5rem;
+    overflow-wrap: anywhere;
+  }
+
+  .person-card-phones,
+  .person-card-assignments {
+    margin: 0.65rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .person-card-phones li {
+    margin-top: 0.25rem;
+  }
+
+  .person-card-phones span {
+    font-weight: 700;
+  }
+
+  .person-card-assignments {
+    display: grid;
+    gap: 0.65rem;
+    margin-top: 0.75rem;
+  }
+
+  .person-card-assignment-group {
+    min-width: 0;
+  }
+
+  .person-card-domain {
+    margin: 0;
+    color: var(--color-acbb-red-hover);
+    font-weight: 700;
+  }
+
+  .person-card-categories {
+    margin: 0.15rem 0 0;
+    color: rgb(17 27 33 / 0.78);
+  }
+
+  .person-card-secondary {
+    margin: 0.65rem 0 0;
+    border-top: 1px solid rgb(17 27 33 / 0.10);
+    padding-top: 0.65rem;
+    font-weight: 600;
+  }
+
+  .people-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .coach-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (min-width: 48rem) {
@@ -407,6 +531,13 @@
 
   .affiliation-trial-poster {
     max-height: 42rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .people-grid,
+  .coach-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

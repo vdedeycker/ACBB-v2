@@ -7,6 +7,7 @@ import {
   trainingSeason,
 } from "../data/training-seasons";
 import { trainingSessions } from "../data/training-sessions";
+import { getPersonName } from "../data/people";
 
 const birthYears = Array.from({ length: 82 }, (_, index) => 2021 - index);
 const domains = [
@@ -87,13 +88,13 @@ const categoryLabels = (categoryIds: string[]) =>
                     {session.schedule.map((entry) => (
                       <dd>
                         {entry.day} : {entry.start}–{entry.end}
-                        {entry.coach && ` — ${entry.coach}`}
+                        {entry.coachId && ` — ${getPersonName(entry.coachId)}`}
                       </dd>
                     ))}
                   </div>
                   <div>
                     <dt>Coach(es)</dt>
-                    <dd>{session.coaches.join(", ")}</dd>
+                    <dd>{session.coaches.map((coachId) => getPersonName(coachId)).join(", ")}</dd>
                   </div>
                   <div>
                     <dt>Lieu</dt>

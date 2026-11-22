@@ -1,0 +1,129 @@
+---
+import type { Person } from "../data/people";
+
+interface Props {
+  person: Person;
+  context: "committee" | "coach";
+}
+
+const { person, context } = Astro.props;
+const fullName = [person.firstName, person.lastName].filter(Boolean).join(" ");
+const showPhones =
+  context === "committee" &&
+  person.governanceRoles.some((role) =>
+    ["Président", "Vice-président", "Secrétaire"].includes(role),
+  );
+
+const coachingGroups = (() => {
+  if (context !== "coach") return [];
+
+  const assignments = person.coachingAssignments;
+  const domainLabels = [
+    "École des jeunes",
+    "Demi-fond",
+    "Sprint / haies / sauts",
+  ];
+  const categoryLabels = [
+    "Kangourous",
+    "Benjamins",
+    "Pupilles",
+    "Minimes",
+    "Cadets",
+    "Scolaires",
+    "Juniors",
+    "Seniors",
+    "Masters",
+  ];
+
+  const domains = assignments.filter((assignment) =>
+    domainLabels.includes(assignment),
+  );
+  const categories = assignments.filter((assignment) =>
+    categoryLabels.includes(assignment),
+  );
+  const secondary = assignments.filter(
+    (assignment) =>
+      !domainLabels.includes(assignment) &&
+      !categoryLabels.includes(assignment),
+  );
+
+  if (domains.length === 0 && categories.length === 0) {
+    return [{ domain: secondary.shift(), categories: [], secondary }];
+  }
+
+  return domains.map((domain) => ({
+    domain,
+    categories,
+    secondary:
+      domain === "Demi-fond" &&
+      person.id === "kevin-brouillard"
+        ? secondary
+        : [],
+  }));
+})();
+---
+
+<article class="person-card">
+  <img
+    src={person.photo ?? "/images/ui/person-placeholder.svg"}
+    alt=""
+    width="160"
+    height="160"
+    loading="lazy"
+    decoding="async"
+    class="person-card-photo"
+  />
+  <div class="min-w-0">
+    <h3>{fullName}</h3>
+    {context === "committee" && person.governanceRoles.length > 0 && (
+      <p class="person-card-role">
+        {person.governanceRoles.join(" · ")}
+      </p>
+    )}
+    {context === "committee" &&
+      person.operationalResponsibilities.length > 0 && (
+        <p class="person-card-responsibility">
+          {person.operationalResponsibilities.join(" · ")}
+        </p>
+      )}
+    {context === "committee" && person.commissions.length > 0 && (
+      <p class="person-card-commission">
+        {person.commissions.join(" · ")}
+      </p>
+    )}
+    {context === "coach" && coachingGroups.length > 0 && (
+      <div class="person-card-assignments" aria-label={`Entraînements de ${fullName}`}>
+        {coachingGroups.map((group) => (
+          <div class="person-card-assignment-group">
+            {group.domain && (
+              <p class="person-card-domain">{group.domain}</p>
+            )}
+            {group.categories.length > 0 && (
+              <p class="person-card-categories">
+                {group.categories.join(" · ")}
+              </p>
+            )}
+            {group.secondary.map((assignment) => (
+              <p class="person-card-secondary">{assignment}</p>
+            ))}
+          </div>
+        ))}
+      </div>
+    )}
+    {person.publicEmail && (
+      <a class="person-card-email" href={`mailto:${person.publicEmail}`}>
+        {person.publicEmail}
+      </a>
+    )}
+    {showPhones && person.publicPhones && (
+      <ul class="person-card-phones" aria-label={`Téléphones publics de ${fullName}`}>
+        {person.publicPhones.map((phone) => (
+          <li>
+            <span>{phone.type} :</span>{" "}
+            <a href={phone.href}>{phone.number}</a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</article>

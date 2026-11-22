@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EventCard from "../components/EventCard.astro";
+import { sortedEvents } from "../data/events";
+---
+
+<BaseLayout
+  title="Événements ACBB"
+  description="Découvrez les événements organisés par l'ACBB et retrouvez leurs informations pratiques."
+>
+  <section class="event-list-hero bg-acbb-beige" aria-labelledby="events-page-heading">
+    <div class="site-container py-12 md:py-16">
+      <p class="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-acbb-red-hover">
+        Vie du club
+      </p>
+      <h1 id="events-page-heading">Les événements ACBB</h1>
+      <p class="mt-5 max-w-2xl">
+        Cette page rassemble les événements organisés par l'ACBB, dans l'ordre
+        chronologique.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-space bg-acbb-white" aria-labelledby="event-list-heading">
+    <div class="site-container">
+      <h2 id="event-list-heading">Prochains rendez-vous</h2>
+      <div class="event-list mt-8">
+        {sortedEvents.map((event) => (
+          <EventCard event={event} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

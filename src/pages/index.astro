@@ -1,11 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CompetitionCard from "../components/CompetitionCard.astro";
+import EventCard from "../components/EventCard.astro";
 import { sortedCompetitions } from "../data/competitions";
+import { sortedEvents } from "../data/events";
 
 const upcomingCompetitionPreview = sortedCompetitions
   .filter((competition) => new Date(`${competition.date}T12:00:00`) >= new Date())
   .slice(0, 3);
+const upcomingEventPreview = sortedEvents
+  .filter((event) => new Date(`${event.date}T12:00:00`) >= new Date())
+  .slice(0, 1);
 ---
 
 <BaseLayout
@@ -142,10 +147,18 @@ const upcomingCompetitionPreview = sortedCompetitions
         <p class="mb-3 font-bold text-acbb-red-hover">Événements ACBB</p>
         <h2 id="events-heading">Des rendez-vous qui font vivre le club</h2>
         <p class="mt-5 max-w-xl">
-          L'ACBB organise ses propres événements sportifs, notamment La
-          Dinosaurienne et les 20 km de la Forêt de Belœil.
+          Retrouvez les prochains moments organisés par l'ACBB.
         </p>
-        <span class="future-action mt-8">Voir les événements ACBB</span>
+        {upcomingEventPreview.length > 0 && (
+          <div class="homepage-event-preview mt-6">
+            {upcomingEventPreview.map((event) => (
+              <EventCard event={event} homepagePreview />
+            ))}
+          </div>
+        )}
+        <a class="button button--primary mt-8" href="/evenements/">
+          Voir les événements ACBB
+        </a>
       </div>
     </div>
   </section>

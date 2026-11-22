@@ -70,6 +70,10 @@
     padding-block: clamp(3rem, 8vw, 6rem);
   }
 
+  .event-detail-space {
+    padding-block: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
   .button {
     display: inline-flex;
     min-height: 2.75rem;
@@ -403,6 +407,131 @@
     background-color: var(--color-acbb-white);
   }
 
+  .event-list {
+    display: grid;
+  }
+
+  .event-card {
+    display: grid;
+    gap: 0.75rem;
+    border-top: 1px solid rgb(17 27 33 / 0.14);
+    padding-block: 1.25rem;
+  }
+
+  .event-card-date,
+  .event-status {
+    color: var(--color-acbb-red-hover);
+    font-weight: 700;
+  }
+
+  .event-status {
+    margin: 0 0 0.5rem;
+  }
+
+  .event-card-content h3 {
+    margin: 0;
+  }
+
+  .event-card-location {
+    margin: 0.75rem 0 0;
+    font-weight: 700;
+  }
+
+  .event-card-description {
+    margin: 0.5rem 0 0;
+  }
+
+  .homepage-event-preview .event-card {
+    border: 1px solid rgb(17 27 33 / 0.12);
+    border-radius: 1.25rem;
+    background-color: var(--color-acbb-white);
+    padding: 1.25rem;
+  }
+
+  .event-detail-facts {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 0;
+  }
+
+  .event-detail-facts div {
+    min-width: 0;
+  }
+
+  .event-detail-facts dt {
+    font-weight: 700;
+  }
+
+  .event-detail-facts dd {
+    margin: 0.25rem 0 0;
+  }
+
+  .event-detail-introduction {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .event-detail-poster {
+    width: 100%;
+    max-height: 38rem;
+    border-radius: 1.25rem;
+    object-fit: contain;
+  }
+
+  .event-menu {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .event-menu li {
+    border-top: 1px solid rgb(17 27 33 / 0.14);
+    padding-top: 1.25rem;
+  }
+
+  .event-menu h3,
+  .event-menu p {
+    margin: 0;
+  }
+
+  .event-menu p {
+    margin-top: 0.5rem;
+  }
+
+  .event-prices {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .event-prices div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid rgb(17 27 33 / 0.14);
+    padding-top: 0.75rem;
+  }
+
+  .event-prices dt {
+    font-weight: 700;
+  }
+
+  .event-prices dd {
+    margin: 0;
+    white-space: nowrap;
+    font-weight: 700;
+  }
+
+  .event-registration {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .event-registration-button {
+    width: 100%;
+  }
+
   .reaffiliation-grid,
   .affiliation-document-grid {
     display: grid;
@@ -589,6 +718,28 @@
     width: min(100% - 3rem, 72rem);
   }
 
+  .event-card {
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .event-detail-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .event-detail-introduction {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .event-registration {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+
+  .event-registration-button {
+    width: auto;
+  }
+
   .competition-entry {
     grid-template-columns: 10rem minmax(0, 1fr);
     gap: 1.5rem;
@@ -646,6 +797,10 @@
 }
 
 @media (min-width: 64rem) {
+  .event-detail-introduction {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
   .people-grid,
   .coach-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

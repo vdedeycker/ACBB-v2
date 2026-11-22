@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { people } from "../data/people";
+
+const partnershipTreasurer = people.find((person) =>
+  person.governanceRoles.includes("Trésorier"),
+);
+const treasurerName = partnershipTreasurer
+  ? `${partnershipTreasurer.firstName} ${partnershipTreasurer.lastName}`
+  : "";
+const treasurerEmail = partnershipTreasurer?.publicEmail;
+---
+
+<BaseLayout
+  title="Devenir partenaire de l'ACBB"
+  description="Découvrez les façons de soutenir l'ACBB : partenariat de saison, partenariat d'événement ou soutien matériel ou en services."
+>
+  <section class="bg-acbb-beige" aria-labelledby="partners-heading">
+    <div class="site-container py-12 md:py-16">
+      <p class="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-acbb-red-hover">
+        Partenaires
+      </p>
+      <h1 id="partners-heading">Devenez partenaire de l'ACBB</h1>
+      <p class="mt-5 max-w-2xl">
+        Soutenez un club local, son École des jeunes, ses activités sportives,
+        sa section Handisport et ses événements.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-space bg-acbb-white" aria-labelledby="opportunities-heading">
+    <div class="site-container">
+      <p class="mb-3 font-bold text-acbb-red-hover">Les possibilités</p>
+      <h2 id="opportunities-heading">Construisons ensemble un partenariat adapté</h2>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-3">
+        <section class="border-t border-acbb-ink/20 pt-5" aria-labelledby="season-partner-heading">
+          <p class="mb-2 text-sm font-bold uppercase tracking-[0.08em] text-acbb-red-hover">
+            1
+          </p>
+          <h3 id="season-partner-heading">Partenaire de la saison</h3>
+          <p class="mt-4">
+            Soutenez l'ACBB sur l'ensemble d'une saison sportive. Selon les
+            accords conclus, cette collaboration peut inclure une présence sur
+            le site, une place parmi les partenaires de la saison et des
+            possibilités de communication autour des activités du club.
+          </p>
+        </section>
+
+        <section class="border-t border-acbb-ink/20 pt-5" aria-labelledby="event-partner-heading">
+          <p class="mb-2 text-sm font-bold uppercase tracking-[0.08em] text-acbb-red-hover">
+            2
+          </p>
+          <h3 id="event-partner-heading">Partenaire d'un événement ACBB</h3>
+          <p class="mt-4">
+            Associez votre soutien à un événement organisé par l'ACBB, tel qu'une
+            activité sportive ou une rencontre conviviale. Les modalités peuvent
+            être définies spécifiquement pour l'événement concerné.
+          </p>
+        </section>
+
+        <section class="border-t border-acbb-ink/20 pt-5" aria-labelledby="material-partner-heading">
+          <p class="mb-2 text-sm font-bold uppercase tracking-[0.08em] text-acbb-red-hover">
+            3
+          </p>
+          <h3 id="material-partner-heading">Soutien matériel ou services</h3>
+          <p class="mt-4">
+            Un partenariat peut aussi prendre la forme d'un équipement,
+            d'impressions, de services, d'un soutien logistique, de prix ou
+            d'autres contributions utiles aux activités du club.
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-space" aria-labelledby="support-heading">
+    <div class="site-container grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:items-start">
+      <div>
+        <p class="mb-3 font-bold text-acbb-red-hover">Pourquoi soutenir l'ACBB</p>
+        <h2 id="support-heading">Contribuer à la vie sportive locale</h2>
+      </div>
+      <div class="max-w-2xl">
+        <p>
+          Un partenariat peut contribuer à l'École des jeunes, aux activités
+          sportives du club, au développement des athlètes, au handisport et
+          aux événements qui font vivre l'ACBB.
+        </p>
+        <p class="mt-4">
+          Chaque soutien aide à maintenir une dynamique sportive locale ouverte,
+          accueillante et proche des familles et des athlètes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-space bg-acbb-white" aria-labelledby="contact-heading">
+    <div class="site-container">
+      <p class="mb-3 font-bold text-acbb-red-hover">Commencer la conversation</p>
+      <h2 id="contact-heading">Vous souhaitez soutenir l'ACBB ?</h2>
+      <p class="mt-5 max-w-2xl">
+        Contactez notre trésorier pour discuter d'un partenariat adapté.
+      </p>
+      {treasurerName && treasurerEmail && (
+        <div class="mt-6">
+          <p class="m-0">
+            <strong>{treasurerName}</strong>
+            <br />
+            Trésorier
+            <br />
+            <a href={`mailto:${treasurerEmail}`}>{treasurerEmail}</a>
+          </p>
+          <a class="button button--primary mt-5" href={`mailto:${treasurerEmail}`}>
+            Contacter le trésorier
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

@@ -5,6 +5,7 @@ interface FooterItem {
   target?: "_blank";
   rel?: "noopener noreferrer";
   ariaLabel?: string;
+  iconSrc?: string;
 }
 
 interface FooterGroup {
@@ -30,6 +31,14 @@ const footerGroups: FooterGroup[] = [
       { label: "Vie du club" },
       { label: "Partenaires" },
       { label: "Contact" },
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/profile.php?id=100057181820430",
+        target: "_blank",
+        rel: "noopener noreferrer",
+        ariaLabel: "Suivre l’ACBB sur Facebook",
+        iconSrc: "/images/logo_facebook.png",
+      },
     ],
   },
   {
@@ -81,8 +90,18 @@ const footerGroups: FooterGroup[] = [
                     target={item.target}
                     rel={item.rel}
                     aria-label={item.ariaLabel}
-                    class="inline-flex min-h-11 items-center text-acbb-white no-underline"
+                    class="inline-flex min-h-11 items-center gap-2 text-acbb-white no-underline"
                   >
+                    {item.iconSrc && (
+                      <img
+                        src={item.iconSrc}
+                        alt=""
+                        width="20"
+                        height="20"
+                        aria-hidden="true"
+                        class="size-5 shrink-0 rounded-sm"
+                      />
+                    )}
                     {item.label}
                   </a>
                 ) : (

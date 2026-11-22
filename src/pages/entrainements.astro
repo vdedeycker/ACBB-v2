@@ -121,6 +121,30 @@ const categoryLabels = (categoryIds: string[]) =>
                 </div>
               </article>
             ))}
+
+            {domain === "École des jeunes" && (
+              <aside
+                class="mt-6 max-w-2xl border-l-[3px] border-acbb-red-hover pl-4"
+                aria-labelledby="youth-facebook-heading"
+              >
+                <h3 id="youth-facebook-heading" class="text-xl">
+                  Communication avec les parents
+                </h3>
+                <p class="mt-3">
+                  Un groupe Facebook privé est utilisé pour les communications
+                  entre les parents et les entraîneurs de l’École des jeunes.
+                </p>
+                <a
+                  class="inline-flex min-h-11 items-center font-semibold"
+                  href="https://www.facebook.com/groups/ecoledesjeunesacbb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Accéder au groupe Facebook privé de l’École des jeunes"
+                >
+                  Groupe Facebook de l’École des jeunes
+                </a>
+              </aside>
+            )}
           </section>
         ))}
       </div>

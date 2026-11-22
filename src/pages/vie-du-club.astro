@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AnnouncementCard from "../components/AnnouncementCard.astro";
+import { activeAnnouncements } from "../data/announcements";
+---
+
+<BaseLayout
+  title="Vie du club - ACBB"
+  description="Découvrez les annonces et les moments importants de la vie de l'ACBB."
+>
+  <section class="bg-acbb-beige" aria-labelledby="club-life-heading">
+    <div class="site-container py-12 md:py-16">
+      <p class="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-acbb-red-hover">
+        Vie du club
+      </p>
+      <h1 id="club-life-heading">La vie de l'ACBB</h1>
+      <p class="mt-5 max-w-2xl">
+        Retrouvez les appels, activités et annonces ponctuelles utiles à notre club.
+      </p>
+    </div>
+  </section>
+
+  {activeAnnouncements.length > 0 && (
+    <section class="section-space" aria-label="Annonces actives">
+      <div class="site-container grid gap-8">
+        {activeAnnouncements.map((announcement) => (
+          <AnnouncementCard announcement={announcement} />
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>

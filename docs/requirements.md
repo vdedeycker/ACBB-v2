@@ -288,7 +288,14 @@ Use contextualized contacts for:
 - sponsorship
 - event-specific needs
 
-Provide a concise Contact page. V1 does not require a website contact form or backend. Prefer direct contextual contact details.
+Contact information is contextualized throughout the website rather than
+duplicated in a dedicated Contact page.
+
+Visitors must be able to identify the appropriate contact for each relevant
+activity through the relevant club, affiliation, partnership, recruitment,
+competition or event context.
+
+V1 does not require a website contact form or backend.
 
 ## Social Media
 

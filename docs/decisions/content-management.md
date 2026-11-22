@@ -67,6 +67,11 @@ displayed. Public phone numbers are permitted only for the Président,
 Vice-président and Secrétaire. Coach phone numbers must not be inferred from
 committee roles or other public identities.
 
+Contact information is contextualized throughout the website rather than
+duplicated on a dedicated generic Contact page. The Club, affiliation,
+youth training, partnership, recruitment, competition and event contexts
+must each expose only the contact or action relevant to that activity.
+
 
 ## Pending Content
 

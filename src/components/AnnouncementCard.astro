@@ -1,0 +1,67 @@
+---
+import type { Announcement } from "../data/announcements";
+
+interface Props {
+  announcement: Announcement;
+}
+
+const { announcement } = Astro.props;
+
+const typeLabels: Record<Announcement["type"], string> = {
+  recrutement: "Recrutement",
+  benevolat: "Bénévolat",
+  "recherche-officiels": "Recherche d'officiels",
+  "aide-evenementielle": "Aide événementielle",
+  "information-club": "Information du club",
+};
+---
+
+<article class="grid items-start gap-8 rounded-2xl bg-acbb-white p-5 md:p-8 lg:grid-cols-[1fr_0.75fr] lg:gap-12">
+  <div>
+    <p class="mb-3 text-sm font-bold uppercase tracking-[0.08em] text-acbb-red-hover">
+      {typeLabels[announcement.type]}
+    </p>
+    <h2>{announcement.title}</h2>
+    <p class="mt-5 max-w-2xl">{announcement.shortDescription}</p>
+
+    <div class="mt-7 grid gap-7">
+      {announcement.sections.map((section, index) => (
+        <section aria-labelledby={`announcement-${announcement.id}-${index + 1}`}>
+          <h3 id={`announcement-${announcement.id}-${index + 1}`}>
+            {section.heading}
+          </h3>
+          {section.paragraphs.map((paragraph) => (
+            <p class="mt-3 max-w-2xl">{paragraph}</p>
+          ))}
+        </section>
+      ))}
+    </div>
+
+    {announcement.contact && (
+      <div class="mt-8">
+        <p class="mb-3 font-bold">Contacter l'ACBB</p>
+        <a class="button button--primary" href={announcement.contact.href}>
+          Appeler le {announcement.contact.label}
+        </a>
+      </div>
+    )}
+
+    {announcement.externalLink && (
+      <a class="button button--primary mt-8" href={announcement.externalLink.href}>
+        {announcement.externalLink.label}
+      </a>
+    )}
+  </div>
+
+  {announcement.poster && (
+    <img
+      src={announcement.poster.src}
+      alt={announcement.poster.alt}
+      width={announcement.poster.width}
+      height={announcement.poster.height}
+      loading="lazy"
+      decoding="async"
+      class="w-full rounded-2xl border border-acbb-ink/10 bg-acbb-beige"
+    />
+  )}
+</article>

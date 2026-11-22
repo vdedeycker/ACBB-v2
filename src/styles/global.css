@@ -311,6 +311,98 @@
     object-fit: contain;
   }
 
+  .competition-list {
+    display: grid;
+  }
+
+  .competition-entry {
+    display: grid;
+    gap: 0.75rem;
+    border-top: 1px solid rgb(17 27 33 / 0.14);
+    padding-block: 1.25rem;
+  }
+
+  .competition-entry-featured {
+    border-left: 4px solid var(--color-acbb-red-hover);
+    background-color: var(--color-acbb-soft-red);
+    padding-inline: 1rem;
+  }
+
+  .competition-entry-date {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-acbb-red-hover);
+  }
+
+  .competition-entry-content h3 {
+    margin: 0;
+  }
+
+  .competition-status,
+  .competition-support {
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+  }
+
+  .competition-support {
+    margin-top: 1rem;
+  }
+
+  .competition-entry-details {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1rem 0 0;
+  }
+
+  .competition-entry-details div {
+    min-width: 0;
+  }
+
+  .competition-entry-details dt {
+    font-weight: 700;
+  }
+
+  .competition-entry-details dd {
+    margin: 0.25rem 0 0;
+  }
+
+  .homepage-competition-preview {
+    display: grid;
+  }
+
+  .homepage-competition-preview .competition-entry {
+    padding-block: 0.75rem;
+  }
+
+  .competition-sources,
+  .competition-flyer-layout {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .competition-source-links {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .competition-source-links a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+  }
+
+  .competition-flyer {
+    width: 100%;
+    max-height: 38rem;
+    border: 1px solid rgb(17 27 33 / 0.12);
+    border-radius: 1.25rem;
+    object-fit: contain;
+    background-color: var(--color-acbb-white);
+  }
+
   .reaffiliation-grid,
   .affiliation-document-grid {
     display: grid;
@@ -495,6 +587,25 @@
 @media (min-width: 48rem) {
   .site-container {
     width: min(100% - 3rem, 72rem);
+  }
+
+  .competition-entry {
+    grid-template-columns: 10rem minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .competition-entry-details {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .competition-sources,
+  .competition-flyer-layout {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: start;
+  }
+
+  .competition-flyer-layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   }
 
   .finder-results-grid {

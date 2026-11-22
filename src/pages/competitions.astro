@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CompetitionCard from "../components/CompetitionCard.astro";
+import {
+  competitionSeason,
+  sortedCompetitions,
+} from "../data/competitions";
+
+const crossCompetitions = sortedCompetitions.filter(
+  (competition) => competition.discipline === "Cross",
+);
+const indoorCompetitions = sortedCompetitions.filter(
+  (competition) => competition.discipline === "Indoor",
+);
+const outdoorCompetitions = sortedCompetitions.filter(
+  (competition) => competition.discipline === "Outdoor",
+);
+---
+
+<BaseLayout
+  title="Compétitions - ACBB"
+  description="Consultez le calendrier ACBB des compétitions Cross et Indoor de la saison 2026-2027."
+>
+  <section class="competition-hero bg-acbb-beige" aria-labelledby="competition-page-heading">
+    <div class="site-container py-12 md:py-16">
+      <p class="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-acbb-red-hover">
+        Compétitions — Saison 2026-2027
+      </p>
+      <h1 id="competition-page-heading">La saison de cross est lancée</h1>
+      <p class="mt-5 max-w-2xl">
+        Retrouvez les rendez-vous Cross et Indoor sélectionnés pour la saison
+        hivernale 2026-2027.
+      </p>
+    </div>
+  </section>
+
+  <aside class="competition-practical-note bg-acbb-white" aria-labelledby="practical-note-heading">
+    <div class="site-container py-6 md:py-8">
+      <h2 id="practical-note-heading" class="text-xl">Horaires et inscriptions</h2>
+      <p class="mt-3 max-w-3xl">
+        Les horaires détaillés et modalités d'inscription peuvent évoluer.
+        Consultez le site ou les communications officielles du club organisateur
+        avant chaque compétition.
+      </p>
+    </div>
+  </aside>
+
+  <section class="section-space bg-acbb-white" aria-labelledby="cross-heading">
+    <div class="site-container">
+      <p class="mb-3 font-bold text-acbb-red-hover">Cross</p>
+      <h2 id="cross-heading">Le calendrier cross</h2>
+      <p class="mt-5 max-w-2xl">
+        9 compétitions sélectionnées dans le calendrier du Comité Provincial du Hainaut.
+      </p>
+      <div class="competition-list mt-8">
+        {crossCompetitions.map((competition) => (
+          <CompetitionCard competition={competition} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section-space" aria-labelledby="indoor-heading">
+    <div class="site-container">
+      <p class="mb-3 font-bold text-acbb-red-hover">Indoor</p>
+      <h2 id="indoor-heading">Le calendrier Indoor</h2>
+      <p class="mt-5 max-w-2xl">
+        11 compétitions indoor et une compétition outdoor distinctes sont
+        recensées dans le calendrier hivernal.
+      </p>
+      <div class="competition-list mt-8">
+        {indoorCompetitions.map((competition) => (
+          <CompetitionCard competition={competition} />
+        ))}
+        {outdoorCompetitions.map((competition) => (
+          <CompetitionCard competition={competition} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-space bg-acbb-white" aria-labelledby="other-sources-heading">
+    <div class="site-container competition-sources">
+      <div>
+        <p class="mb-3 font-bold text-acbb-red-hover">Autres compétitions</p>
+        <h2 id="other-sources-heading">Vous cherchez une autre compétition ?</h2>
+      </div>
+      <div>
+        <ul class="competition-source-links">
+          <li>
+            <a href="https://www.beathletics.be/calendar" rel="noopener" target="_blank">
+              Consulter le calendrier officiel de Belgian Athletics
+            </a>
+          </li>
+          <li>
+            <a href="https://www.athletisme.app/" rel="noopener" target="_blank">
+              Consulter les compétitions sur Athlétisme.app
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/profile.php?id=61577743555509&locale=fr_FR"
+              rel="noopener"
+              target="_blank"
+            >
+              Suivre le Challenge des jeunes sur Facebook
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-space" aria-labelledby="flyer-heading">
+    <div class="site-container competition-flyer-layout">
+      <div>
+        <p class="mb-3 font-bold text-acbb-red-hover">Document de référence</p>
+        <h2 id="flyer-heading">Le flyer hivernal officiel</h2>
+        <p class="mt-5 max-w-2xl">
+          Le calendrier ci-dessus reste la source principale lisible sans
+          agrandissement. Le flyer est proposé comme référence visuelle
+          complémentaire.
+        </p>
+        <a class="button button--primary mt-6" href={competitionSeason.flyerHref} target="_blank">
+          Ouvrir le calendrier hivernal
+        </a>
+      </div>
+      <img
+        src={competitionSeason.flyerHref}
+        alt={competitionSeason.flyerAlt}
+        width="1240"
+        height="1754"
+        loading="lazy"
+        decoding="async"
+        class="competition-flyer"
+      />
+    </div>
+  </section>
+</BaseLayout>

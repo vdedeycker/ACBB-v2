@@ -1,5 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CompetitionCard from "../components/CompetitionCard.astro";
+import { sortedCompetitions } from "../data/competitions";
+
+const upcomingCompetitionPreview = sortedCompetitions
+  .filter((competition) => new Date(`${competition.date}T12:00:00`) >= new Date())
+  .slice(0, 3);
 ---
 
 <BaseLayout
@@ -97,11 +103,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <p class="mb-3 font-bold text-acbb-red-hover">Compétitions</p>
         <h2 id="competitions-heading">Se mesurer, progresser et représenter l'ACBB</h2>
         <p class="mt-5 max-w-xl">
-          Les athlètes de l'ACBB participent à des compétitions. Les prochains
-          rendez-vous et une sélection de résultats seront proposés sur le
-          futur calendrier du club.
+          Consultez les prochains rendez-vous Cross et Indoor de la saison
+          2026-2027.
         </p>
-        <span class="future-action mt-8">Voir les compétitions</span>
+        <div class="homepage-competition-preview mt-6">
+          {upcomingCompetitionPreview.map((competition) => (
+            <CompetitionCard competition={competition} homepagePreview />
+          ))}
+        </div>
+        <a class="button button--primary mt-8" href="/competitions/">
+          Voir les compétitions
+        </a>
       </div>
       <img
         src="/images/competitions/competition-start.jpg"

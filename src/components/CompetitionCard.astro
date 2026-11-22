@@ -1,0 +1,78 @@
+---
+import type { Competition } from "../data/competitions";
+
+interface Props {
+  competition: Competition;
+  homepagePreview?: boolean;
+}
+
+const { competition, homepagePreview = false } = Astro.props;
+
+const date = new Date(`${competition.date}T12:00:00`);
+const formattedDate = new Intl.DateTimeFormat("fr-BE", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+}).format(date);
+---
+
+<article
+  class:list={[
+    "competition-entry",
+    competition.featured && "competition-entry-featured",
+  ]}
+>
+  <div class="competition-entry-date">
+    <time datetime={competition.date}>{formattedDate}</time>
+  </div>
+
+  <div class="competition-entry-content">
+    {competition.featured && (
+      <p class="competition-status">Rendez-vous ACBB</p>
+    )}
+
+    <h3>{competition.name}</h3>
+
+    <dl class="competition-entry-details">
+      <div>
+        <dt>Discipline</dt>
+        <dd>{competition.discipline}</dd>
+      </div>
+      <div>
+        <dt>Lieu</dt>
+        <dd>{competition.location}</dd>
+      </div>
+      <div>
+        <dt>Organisateur</dt>
+        <dd>{competition.organizer}</dd>
+      </div>
+    </dl>
+
+    {competition.clubSupport && (
+      <p class="competition-support">
+        Encadrement ACBB
+        {competition.clubSupportNote && ` — ${competition.clubSupportNote}`}
+      </p>
+    )}
+
+    {!homepagePreview && (competition.organizerUrl || competition.informationHref) && (
+      <div class="mt-5 flex flex-wrap gap-3">
+        {competition.organizerUrl && (
+          <a
+            class="button button--primary"
+            href={competition.organizerUrl}
+            rel="noopener"
+            target="_blank"
+          >
+            Informations de l'organisateur
+          </a>
+        )}
+        {competition.informationHref && (
+          <a class="button button--primary" href={competition.informationHref}>
+            Consulter les informations officielles
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</article>

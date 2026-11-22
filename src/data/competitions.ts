@@ -1,0 +1,321 @@
+export type CompetitionDiscipline = "Cross" | "Indoor" | "Outdoor" | "Route" | "Piste";
+
+export interface CompetitionPostEvent {
+  report?: string;
+  selectedResults?: string[];
+  galleryReferences?: string[];
+  facebookPostHref?: string;
+}
+
+export interface Competition {
+  id: string;
+  name: string;
+  date: string;
+  discipline: CompetitionDiscipline;
+  location: string;
+  organizer: string;
+  season: string;
+  concernedCategories?: string[];
+  organizerUrl?: string;
+  informationHref?: string;
+  registrationHref?: string;
+  resultsHref?: string;
+  sourceLabel: string;
+  sourceEmphasized: boolean;
+  featured: boolean;
+  clubSupport: boolean;
+  clubSupportNote?: string;
+  postEvent?: CompetitionPostEvent;
+}
+
+export const competitionSeason = {
+  id: "2026-2027",
+  label: "Saison 2026-2027",
+  title: "Cross & Indoor",
+  flyerHref: "/images/competitions/calendrier-hivernal-2026-2027.jpg",
+  flyerAlt:
+    "Flyer officiel du calendrier hivernal 2026-2027 Cross & Indoor du Comité Provincial du Hainaut",
+};
+
+export const competitions: Competition[] = [
+  {
+    id: "cross-dour-sports-2026-11-08",
+    name: "Cross de Dour Sports",
+    date: "2026-11-08",
+    discipline: "Cross",
+    location: "Dour",
+    organizer: "DS",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "grand-prix-bruno-marchetti-2026-11-15",
+    name: "Grand Prix Bruno Marchetti",
+    date: "2026-11-15",
+    discipline: "Cross",
+    location: "La Louvière",
+    organizer: "ACLO",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "cross-national-rusta-2026-11-21",
+    name: "Cross national de la Rusta",
+    date: "2026-11-21",
+    discipline: "Cross",
+    location: "Stade de la Rusta",
+    organizer: "USTA",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "cross-osga-2026-11-29",
+    name: "Cross de l'OSGA",
+    date: "2026-11-29",
+    discipline: "Cross",
+    location: "Parc de Baudour, 7331 Baudour",
+    organizer: "OSGA",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "cross-amitie-2026-12-12",
+    name: "23e Cross de l'Amitié",
+    date: "2026-12-12",
+    discipline: "Cross",
+    location: "Stade Jonet, Obourg",
+    organizer: "GOSP",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "cross-moha-2027-01-10",
+    name: "Cross du MOHA",
+    date: "2027-01-10",
+    discipline: "Cross",
+    location: "Stade Haulet, Obourg",
+    organizer: "MOHA",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "cross-lessines-2027-01-16",
+    name: "Cross de Lessines",
+    date: "2027-01-16",
+    discipline: "Cross",
+    location: "Site du Caillou Hubert, Lessines",
+    organizer: "ACLE",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "championnats-provinciaux-cross-2027-01-31",
+    name: "Championnats provinciaux de cross",
+    date: "2027-01-31",
+    discipline: "Cross",
+    location: "Stade du Taillis Pré",
+    organizer: "UAC",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: true,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "cross-fleu-2027-02-07",
+    name: "Cross FLEU",
+    date: "2027-02-07",
+    discipline: "Cross",
+    location: "Fleurus",
+    organizer: "FLEU",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "meeting-jeunes-2026-12-05",
+    name: "Meeting des jeunes",
+    date: "2026-12-05",
+    discipline: "Indoor",
+    location: "Dour",
+    organizer: "DS",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "indoor-bpm-tc-2026-12-05",
+    name: "Indoor BPM et TC",
+    date: "2026-12-05",
+    discipline: "Indoor",
+    location: "Dour",
+    organizer: "DS",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "indoor-moha-2026-12-13",
+    name: "Compétition indoor",
+    date: "2026-12-13",
+    discipline: "Indoor",
+    location: "Stade Haulet, Obourg",
+    organizer: "MOHA",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "championnats-provinciaux-indoor-2027-01-09",
+    name: "Championnats provinciaux du Hainaut indoor",
+    date: "2027-01-09",
+    discipline: "Indoor",
+    location: "Louvain-la-Neuve",
+    organizer: "CPH",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: true,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "triathlon-bpm-masters-2027-01-09",
+    name: "Triathlon BPM et Masters",
+    date: "2027-01-09",
+    discipline: "Indoor",
+    location: "Dour",
+    organizer: "DS",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "septieme-indoor-2027-01-17",
+    name: "7e indoor",
+    date: "2027-01-17",
+    discipline: "Indoor",
+    location: "Salle de la Rusta",
+    organizer: "USTA",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "indoor-moha-tc-2027-01-24",
+    name: "Compétition indoor du MOHA TC",
+    date: "2027-01-24",
+    discipline: "Indoor",
+    location: "Stade Haulet, Obourg",
+    organizer: "MOHA",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "fete-du-sprint-2027-01-30",
+    name: "Fête du sprint",
+    date: "2027-01-30",
+    discipline: "Indoor",
+    location: "Dour",
+    organizer: "DS",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "indoor-moha-bpm-2027-02-06",
+    name: "Compétition indoor du MOHA (BPM)",
+    date: "2027-02-06",
+    discipline: "Indoor",
+    location: "Stade Haulet, Obourg",
+    organizer: "MOHA",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "meeting-rusta-indoor-2027-02-13",
+    name: "Meeting de concours et de lancers longs hivernaux (Indoor)",
+    date: "2027-02-13",
+    discipline: "Indoor",
+    location: "Stade de la Rusta",
+    organizer: "USTA",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "meeting-rusta-outdoor-2027-02-13",
+    name: "Meeting concours et lancers longs hivernaux (Outdoor)",
+    date: "2027-02-13",
+    discipline: "Outdoor",
+    location: "Stade de la Rusta",
+    organizer: "USTA",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+  {
+    id: "indoor-moha-bpm-categories-2027-03-07",
+    name: "Compétition indoor du MOHA BPM + Cadets, Scolaires, Seniors (hors U23) et Masters",
+    date: "2027-03-07",
+    discipline: "Indoor",
+    location: "Stade Haulet, Obourg",
+    organizer: "MOHA",
+    season: "2026-2027",
+    sourceLabel: "Calendrier hivernal Cross & Indoor 2026-2027 du Comité Provincial du Hainaut",
+    sourceEmphasized: false,
+    featured: false,
+    clubSupport: false,
+  },
+];
+
+export const getCompetitionDateTime = (competition: Competition): number =>
+  new Date(`${competition.date}T12:00:00`).getTime();
+
+export const sortedCompetitions = [...competitions].sort(
+  (left, right) => getCompetitionDateTime(left) - getCompetitionDateTime(right),
+);

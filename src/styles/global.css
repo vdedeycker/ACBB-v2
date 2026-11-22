@@ -261,6 +261,111 @@
     display: grid;
     gap: 0.5rem;
   }
+
+  .affiliation-steps {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .affiliation-step {
+    display: grid;
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    gap: 1rem;
+    border-top: 1px solid rgb(17 27 33 / 0.14);
+    padding-top: 1.5rem;
+  }
+
+  .affiliation-step-number {
+    display: inline-flex;
+    width: 2.75rem;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: var(--color-acbb-soft-red);
+    color: var(--color-acbb-red-hover);
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .affiliation-step h3 {
+    margin: 0;
+  }
+
+  .affiliation-step p {
+    max-width: 48rem;
+  }
+
+  .affiliation-step-content {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .affiliation-trial-poster {
+    width: 100%;
+    max-height: 36rem;
+    border-radius: 1.25rem;
+    object-fit: contain;
+  }
+
+  .reaffiliation-grid,
+  .affiliation-document-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .reaffiliation-panel,
+  .affiliation-document-grid section {
+    min-width: 0;
+    border: 1px solid rgb(17 27 33 / 0.12);
+    border-radius: 1.25rem;
+    background-color: var(--color-acbb-white);
+    padding: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .reaffiliation-fees {
+    display: grid;
+    gap: 0.5rem;
+    margin: 1.25rem 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .reaffiliation-fees li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid rgb(17 27 33 / 0.12);
+    padding-top: 0.5rem;
+  }
+
+  .reaffiliation-iban {
+    overflow-wrap: anywhere;
+    font-weight: 700;
+  }
+
+  .reaffiliation-details {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .reaffiliation-details div {
+    border-top: 1px solid rgb(17 27 33 / 0.12);
+    padding-top: 0.75rem;
+  }
+
+  .reaffiliation-details dt {
+    font-weight: 700;
+  }
+
+  .reaffiliation-details dd {
+    margin: 0.25rem 0 0;
+    overflow-wrap: anywhere;
+  }
 }
 
 @media (min-width: 48rem) {
@@ -288,6 +393,20 @@
 
   .training-pedagogy-wide {
     grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  }
+
+  .reaffiliation-grid,
+  .affiliation-document-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .affiliation-step-content {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: start;
+  }
+
+  .affiliation-trial-poster {
+    max-height: 42rem;
   }
 }
 

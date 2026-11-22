@@ -12,7 +12,10 @@ const primaryNavigation: NavigationItem[] = [
   { label: "Événements ACBB" },
 ];
 
-const isActive = (href?: string) => href && Astro.url.pathname === href;
+const isActive = (href?: string) => href && (
+  Astro.url.pathname === href ||
+  (href === "/" && Astro.url.pathname === "/")
+);
 ---
 
 <header class="border-b border-acbb-ink/10 bg-acbb-beige">
@@ -50,11 +53,13 @@ const isActive = (href?: string) => href && Astro.url.pathname === href;
       )}
     </nav>
 
-    <span
-      class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-acbb-red-hover px-2 py-2 font-semibold text-acbb-white sm:px-4"
+    <a
+      href="/rejoindre/"
+      aria-current={Astro.url.pathname === "/rejoindre/" ? "page" : undefined}
+      class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-acbb-red-hover px-2 py-2 font-semibold text-acbb-white no-underline sm:px-4"
     >
       Rejoindre l'ACBB
-    </span>
+    </a>
 
     <details class="relative shrink-0 lg:hidden">
       <summary

@@ -1,0 +1,254 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  affiliationSeason,
+  reaffiliationFees,
+} from "../data/affiliation";
+
+const documents = [
+  {
+    href: "/documents/affiliation/certificat-medical.pdf",
+    label: "Télécharger le certificat médical",
+  },
+  {
+    href: "/documents/affiliation/fiche-renseignements-athlete-acbb.pdf",
+    label: "Télécharger la fiche de renseignements",
+  },
+];
+
+const resignationDocuments = [
+  {
+    href: "/documents/affiliation/modele-resiliation-adulte-2025.doc",
+    label: "Télécharger le modèle pour adulte",
+  },
+  {
+    href: "/documents/affiliation/modele-resiliation-mineure-2025.doc",
+    label: "Télécharger le modèle pour mineur",
+  },
+];
+---
+
+<BaseLayout
+  title="Rejoindre l'ACBB"
+  description="Découvrez comment essayer l'ACBB, préparer une première affiliation ou renouveler votre affiliation pour 2026-2027."
+>
+  <section class="affiliation-hero bg-acbb-beige" aria-labelledby="join-heading">
+    <div class="site-container py-12 md:py-16">
+      <p class="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-acbb-red-hover">
+        Affiliation
+      </p>
+      <h1 id="join-heading">Rejoindre l'ACBB</h1>
+      <p class="mt-5 max-w-2xl">
+        Venez découvrir l'athlétisme avant de commencer les démarches
+        d'affiliation.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="button button--primary" href="/entrainements/">
+          Trouver mon entraînement
+        </a>
+        <a class="future-action" href="#premiere-affiliation">
+          Première affiliation
+        </a>
+        <a class="future-action" href="#reaffiliation">
+          Ré-affiliation 2026-2027
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-space bg-acbb-white" id="premiere-affiliation" aria-labelledby="first-heading">
+    <div class="site-container">
+      <p class="mb-3 font-bold text-acbb-red-hover">Première affiliation</p>
+      <h2 id="first-heading">Comment rejoindre le club</h2>
+
+      <ol class="affiliation-steps">
+        <li class="affiliation-step">
+          <span class="affiliation-step-number" aria-hidden="true">1</span>
+          <div class="affiliation-step-content">
+            <div class="affiliation-step-copy">
+            <h3>Venir essayer et trouver son entraînement</h3>
+            <p>
+              Jusqu'à deux séances d'essai sont disponibles pour découvrir
+              l'athlétisme à l'ACBB. Il n'est pas nécessaire de connaître à
+              l'avance les catégories d'athlétisme.
+            </p>
+            <p>
+              Utilisez le moteur de recherche par année de naissance pour
+              identifier le groupe qui peut convenir à l'athlète.
+            </p>
+            <a class="button button--primary mt-5" href="/entrainements#trouver-entrainement">
+              Trouver mon entraînement
+            </a>
+            </div>
+            <img
+              src="/images/training/acbb-affiche-seances-dessai.jpg"
+              alt="Affiche promotionnelle des séances d'essai ACBB"
+              width="1410"
+              height="2000"
+              loading="lazy"
+              decoding="async"
+              class="affiliation-trial-poster"
+            />
+          </div>
+        </li>
+
+        <li class="affiliation-step">
+          <span class="affiliation-step-number" aria-hidden="true">2</span>
+          <div>
+            <h3>Préparer son dossier</h3>
+            <p>
+              Renseignez la fiche de renseignements de l'athlète. Faites
+              compléter le certificat médical par un médecin lorsque celui-ci
+              est exigé.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              {documents.map((document) => (
+                <a class="button button--primary" href={document.href} download>
+                  {document.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </li>
+
+        <li class="affiliation-step">
+          <span class="affiliation-step-number" aria-hidden="true">3</span>
+          <div>
+            <h3>Transmettre son dossier</h3>
+            <p>
+              Complétez les documents nécessaires puis transmettez-les au
+              secrétariat du club selon la procédure d'affiliation confirmée
+              pour votre demande.
+            </p>
+          </div>
+        </li>
+
+        <li class="affiliation-step">
+          <span class="affiliation-step-number" aria-hidden="true">4</span>
+          <div>
+            <h3>Payer sa cotisation</h3>
+            <p>
+              Acquittez le montant d'affiliation applicable, une fois confirmé
+              par le club. Conservez la preuve de paiement.
+            </p>
+          </div>
+        </li>
+
+        <li class="affiliation-step">
+          <span class="affiliation-step-number" aria-hidden="true">5</span>
+          <div>
+            <h3>Finaliser son affiliation</h3>
+            <p>
+              Une confirmation d'affiliation peut être envoyée par la plateforme
+              informatique LBFA, Twizzit, après validation du dossier et du
+              paiement selon la procédure communiquée par le club.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section-space" id="reaffiliation" aria-labelledby="renewal-heading">
+    <div class="site-container">
+      <p class="mb-3 font-bold text-acbb-red-hover">Athlètes déjà affiliés</p>
+      <h2 id="renewal-heading">Ré-affiliation 2026-2027</h2>
+      <p class="mt-5 max-w-2xl">{affiliationSeason.period}</p>
+
+      <div class="reaffiliation-grid">
+        <section class="reaffiliation-panel" aria-labelledby="payment-heading">
+          <h3 id="payment-heading">Paiement</h3>
+          <p>
+            <strong>À régler avant le {affiliationSeason.reaffiliationDeadline}</strong>
+            sur le compte {affiliationSeason.accountHolder}.
+          </p>
+          <p class="reaffiliation-iban">{affiliationSeason.iban}</p>
+
+          <ul class="reaffiliation-fees" aria-label="Tarifs de ré-affiliation">
+            {reaffiliationFees.map((item) => (
+              <li>
+                <span>{item.athlete}</span>
+                <strong>{item.fee}</strong>
+              </li>
+            ))}
+          </ul>
+          <p class="text-sm text-acbb-ink/75">
+            Tarif régressif pour plusieurs athlètes domiciliés à la même adresse.
+          </p>
+        </section>
+
+        <section class="reaffiliation-panel" aria-labelledby="communication-heading">
+          <h3 id="communication-heading">Communication et dossard</h3>
+          <dl class="reaffiliation-details">
+            <div>
+              <dt>Communication bancaire</dt>
+              <dd>{affiliationSeason.communication}</dd>
+            </div>
+            <div>
+              <dt>Avec demande de dossard</dt>
+              <dd>{affiliationSeason.bibCommunication}</dd>
+            </div>
+            <div>
+              <dt>Confirmation LBFA</dt>
+              <dd>
+                Votre ré-affiliation est validée par l'e-mail de confirmation
+                envoyé depuis la plateforme LBFA Twizzit après paiement.
+              </dd>
+            </div>
+          </dl>
+        </section>
+      </div>
+
+      <a
+        class="button button--primary mt-6"
+        href="/documents/affiliation/lettre-reaffiliation-2026-2027.pdf"
+        download
+      >
+        Télécharger la lettre de ré-affiliation 2026-2027
+      </a>
+    </div>
+  </section>
+
+  <section class="section-space bg-acbb-white" aria-labelledby="documents-heading">
+    <div class="site-container">
+      <p class="mb-3 font-bold text-acbb-red-hover">Documents utiles</p>
+      <h2 id="documents-heading">Affiliation et résiliation</h2>
+
+      <div class="affiliation-document-grid">
+        <section aria-labelledby="medical-form-heading">
+          <h3 id="medical-form-heading">Première affiliation</h3>
+          <p>
+            Le certificat médical permet à votre médecin de compléter les
+            informations médicales nécessaires à l'affiliation. La fiche de
+            renseignements rassemble les informations administratives de
+            l'athlète.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-3">
+            {documents.map((document) => (
+              <a class="button button--primary" href={document.href} download>
+                {document.label}
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section aria-labelledby="resignation-heading">
+          <h3 id="resignation-heading">Suspension ou résiliation</h3>
+          <p>
+            Une suspension pour un an ne nécessite aucune démarche décrite
+            dans les documents fournis. Pour une désaffiliation, complétez le
+            modèle correspondant, envoyez-le à la LBFA et prévenez le
+            secrétariat du club.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-3">
+            {resignationDocuments.map((document) => (
+              <a class="button" href={document.href} download>
+                {document.label}
+              </a>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -2,6 +2,9 @@
 interface FooterItem {
   label: string;
   href?: string;
+  target?: "_blank";
+  rel?: "noopener noreferrer";
+  ariaLabel?: string;
 }
 
 interface FooterGroup {
@@ -33,7 +36,14 @@ const footerGroups: FooterGroup[] = [
     title: "Informations",
     items: [
       { label: "Documents du club" },
-      { label: "Règlement intérieur" },
+      {
+        label: "Règlement d’ordre intérieur",
+        href: "/documents/club/reglement-ordre-interieur-acbb.pdf",
+        target: "_blank",
+        rel: "noopener noreferrer",
+        ariaLabel:
+          "Consulter le règlement d’ordre intérieur de l’ACBB au format PDF",
+      },
       { label: "Confidentialité" },
     ],
   },
@@ -54,6 +64,9 @@ const footerGroups: FooterGroup[] = [
                 {item.href ? (
                   <a
                     href={item.href}
+                    target={item.target}
+                    rel={item.rel}
+                    aria-label={item.ariaLabel}
                     class="inline-flex min-h-11 items-center text-acbb-white no-underline"
                   >
                     {item.label}

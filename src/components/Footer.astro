@@ -1,4 +1,6 @@
 ---
+import { sitePath } from "../utils/sitePath";
+
 interface FooterItem {
   label: string;
   href?: string;
@@ -85,7 +87,7 @@ const footerGroups: FooterGroup[] = [
               <li class="py-1">
                 {item.href ? (
                   <a
-                    href={item.href}
+                    href={sitePath(item.href)}
                     target={item.target}
                     rel={item.rel}
                     aria-label={item.ariaLabel}
@@ -93,7 +95,7 @@ const footerGroups: FooterGroup[] = [
                   >
                     {item.iconSrc && (
                       <img
-                        src={item.iconSrc}
+                        src={sitePath(item.iconSrc)}
                         alt=""
                         width="20"
                         height="20"

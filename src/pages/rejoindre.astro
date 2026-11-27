@@ -4,6 +4,7 @@ import {
   affiliationSeason,
   reaffiliationFees,
 } from "../data/affiliation";
+import { sitePath } from "../utils/sitePath";
 
 const documents = [
   {
@@ -43,7 +44,7 @@ const resignationDocuments = [
         d'affiliation.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a class="button button--primary" href="/entrainements/">
+        <a class="button button--primary" href={sitePath("/entrainements/")}>
           Trouver mon entraînement
         </a>
         <a class="future-action" href="#premiere-affiliation">
@@ -76,12 +77,12 @@ const resignationDocuments = [
               Utilisez le moteur de recherche par année de naissance pour
               identifier le groupe qui peut convenir à l'athlète.
             </p>
-            <a class="button button--primary mt-5" href="/entrainements#trouver-entrainement">
+            <a class="button button--primary mt-5" href={sitePath("/entrainements/#trouver-entrainement")}>
               Trouver mon entraînement
             </a>
             </div>
             <img
-              src="/images/training/acbb-affiche-seances-dessai.jpg"
+              src={sitePath("/images/training/acbb-affiche-seances-dessai.jpg")}
               alt="Affiche promotionnelle des séances d'essai ACBB"
               width="1410"
               height="2000"
@@ -103,7 +104,7 @@ const resignationDocuments = [
             </p>
             <div class="mt-5 flex flex-wrap gap-3">
               {documents.map((document) => (
-                <a class="button button--primary" href={document.href} download>
+                <a class="button button--primary" href={sitePath(document.href)} download>
                   {document.label}
                 </a>
               ))}
@@ -201,7 +202,7 @@ const resignationDocuments = [
 
       <a
         class="button button--primary mt-6"
-        href="/documents/affiliation/lettre-reaffiliation-2026-2027.pdf"
+        href={sitePath("/documents/affiliation/lettre-reaffiliation-2026-2027.pdf")}
         download
       >
         Télécharger la lettre de ré-affiliation 2026-2027
@@ -225,7 +226,7 @@ const resignationDocuments = [
           </p>
           <div class="mt-5 flex flex-wrap gap-3">
             {documents.map((document) => (
-              <a class="button button--primary" href={document.href} download>
+              <a class="button button--primary" href={sitePath(document.href)} download>
                 {document.label}
               </a>
             ))}
@@ -242,7 +243,7 @@ const resignationDocuments = [
           </p>
           <div class="mt-5 flex flex-wrap gap-3">
             {resignationDocuments.map((document) => (
-              <a class="button" href={document.href} download>
+              <a class="button" href={sitePath(document.href)} download>
                 {document.label}
               </a>
             ))}

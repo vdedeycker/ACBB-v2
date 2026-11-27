@@ -1,5 +1,6 @@
 ---
 import type { Person } from "../data/people";
+import { sitePath } from "../utils/sitePath";
 
 interface Props {
   person: Person;
@@ -69,7 +70,7 @@ const coachingGroups = (() => {
 
 <article class="person-card">
   <img
-    src={person.photo ?? "/images/ui/person-placeholder.svg"}
+    src={sitePath(person.photo ?? "/images/ui/person-placeholder.svg")}
     alt=""
     width="160"
     height="160"

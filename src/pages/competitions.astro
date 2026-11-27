@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CompetitionCard from "../components/CompetitionCard.astro";
+import { sitePath } from "../utils/sitePath";
 import {
   competitionSeason,
   sortedCompetitions,
@@ -145,12 +146,12 @@ const outdoorCompetitions = sortedCompetitions.filter(
           agrandissement. Le flyer est proposé comme référence visuelle
           complémentaire.
         </p>
-        <a class="button button--primary mt-6" href={competitionSeason.flyerHref} target="_blank">
+        <a class="button button--primary mt-6" href={sitePath(competitionSeason.flyerHref)} target="_blank">
           Ouvrir le calendrier hivernal
         </a>
       </div>
       <img
-        src={competitionSeason.flyerHref}
+        src={sitePath(competitionSeason.flyerHref)}
         alt={competitionSeason.flyerAlt}
         width="1240"
         height="1754"

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TrainingFinder from "../components/TrainingFinder.astro";
+import { sitePath } from "../utils/sitePath";
 import {
   dltaStages,
   getPublicTrainingCategories,
@@ -193,7 +194,7 @@ const categoryLabels = (categoryIds: string[]) =>
       <p class="mt-5">
         Les catégories présentées correspondent à la saison 2026-2027.
       </p>
-      <a class="button button--primary mt-5" href={trainingSeason.sourceHref}>
+      <a class="button button--primary mt-5" href={sitePath(trainingSeason.sourceHref)}>
         Consulter le tableau officiel des catégories LBFA
       </a>
     </div>

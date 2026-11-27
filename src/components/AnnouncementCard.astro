@@ -1,5 +1,6 @@
 ---
 import type { Announcement } from "../data/announcements";
+import { sitePath } from "../utils/sitePath";
 
 interface Props {
   announcement: Announcement;
@@ -40,14 +41,14 @@ const typeLabels: Record<Announcement["type"], string> = {
     {announcement.contact && (
       <div class="mt-8">
         <p class="mb-3 font-bold">Contacter l'ACBB</p>
-        <a class="button button--primary" href={announcement.contact.href}>
+        <a class="button button--primary" href={sitePath(announcement.contact.href)}>
           Appeler le {announcement.contact.label}
         </a>
       </div>
     )}
 
     {announcement.externalLink && (
-      <a class="button button--primary mt-8" href={announcement.externalLink.href}>
+      <a class="button button--primary mt-8" href={sitePath(announcement.externalLink.href)}>
         {announcement.externalLink.label}
       </a>
     )}
@@ -55,7 +56,7 @@ const typeLabels: Record<Announcement["type"], string> = {
 
   {announcement.poster && (
     <img
-      src={announcement.poster.src}
+      src={sitePath(announcement.poster.src)}
       alt={announcement.poster.alt}
       width={announcement.poster.width}
       height={announcement.poster.height}

@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PersonCard from "../components/PersonCard.astro";
 import { people } from "../data/people";
+import { sitePath } from "../utils/sitePath";
 
 const committee = people.filter((person) => person.governanceRoles.length > 0);
 const coaches = people.filter((person) => person.coachingAssignments.length > 0);
@@ -43,7 +44,7 @@ const coaches = people.filter((person) => person.coachingAssignments.length > 0)
       <p class="mt-5 max-w-2xl">
         Les affectations ci-dessous donnent une vue d'ensemble des domaines
         encadrés. Les horaires restent disponibles sur la page
-        <a href="/entrainements/">Entraînements</a>.
+        <a href={sitePath("/entrainements/")}>Entraînements</a>.
       </p>
       <div class="coach-grid">
         {coaches.map((person) => (

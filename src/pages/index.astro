@@ -5,6 +5,7 @@ import EventCard from "../components/EventCard.astro";
 import { sortedCompetitions } from "../data/competitions";
 import { sortedEvents } from "../data/events";
 import { activeAnnouncements } from "../data/announcements";
+import { sitePath } from "../utils/sitePath";
 
 const upcomingCompetitionPreview = sortedCompetitions
   .filter((competition) => new Date(`${competition.date}T12:00:00`) >= new Date())
@@ -29,16 +30,16 @@ const featuredAnnouncement = activeAnnouncements.find(
         </p>
         <h1 id="hero-heading">L'athlétisme pour toutes et tous.</h1>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a class="future-action future-action--primary" href="/entrainements/">
+          <a class="future-action future-action--primary" href={sitePath("/entrainements/")}>
             Voir les entraînements
           </a>
-          <a class="future-action future-action--primary" href="/rejoindre/">
+          <a class="future-action future-action--primary" href={sitePath("/rejoindre/")}>
             Rejoindre l'ACBB
           </a>
         </div>
       </div>
       <img
-        src="/images/home/acbb-young-athlete-hero.jpg"
+        src={sitePath("/images/home/acbb-young-athlete-hero.jpg")}
         alt="Jeune athlète ACBB en pleine course pendant une compétition"
         width="2048"
         height="1363"
@@ -63,7 +64,7 @@ const featuredAnnouncement = activeAnnouncements.find(
             {featuredAnnouncement.shortDescription}
           </p>
         </div>
-        <a class="button button--primary shrink-0" href="/vie-du-club/">
+        <a class="button button--primary shrink-0" href={sitePath("/vie-du-club/")}>
           Voir l'annonce
         </a>
       </div>
@@ -85,13 +86,13 @@ const featuredAnnouncement = activeAnnouncements.find(
           <li class="rounded-full bg-acbb-beige px-4 py-3 font-semibold">Demi-fond</li>
           <li class="rounded-full bg-acbb-beige px-4 py-3 font-semibold">Handisport</li>
         </ul>
-        <a class="future-action mt-8" href="/entrainements/">
+        <a class="future-action mt-8" href={sitePath("/entrainements/")}>
           Voir les entraînements
         </a>
       </div>
       <div class="order-1 lg:order-2">
         <img
-          src="/images/training/track-training-session.jpg"
+          src={sitePath("/images/training/track-training-session.jpg")}
           alt="Jeune athlète suivant un exercice sur la piste"
           width="1600"
           height="1200"
@@ -106,7 +107,7 @@ const featuredAnnouncement = activeAnnouncements.find(
   <section class="section-space" aria-labelledby="handisport-heading">
     <div class="site-container grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
       <img
-        src="/images/handisport/handisport-athletes.jpg"
+        src={sitePath("/images/handisport/handisport-athletes.jpg")}
         alt="Athlètes pratiquant le handisport réunis sur une piste d'athlétisme"
         width="2048"
         height="1363"
@@ -141,12 +142,12 @@ const featuredAnnouncement = activeAnnouncements.find(
             <CompetitionCard competition={competition} homepagePreview />
           ))}
         </div>
-        <a class="button button--primary mt-8" href="/competitions/">
+        <a class="button button--primary mt-8" href={sitePath("/competitions/")}>
           Voir les compétitions
         </a>
       </div>
       <img
-        src="/images/competitions/competition-start.jpg"
+        src={sitePath("/images/competitions/competition-start.jpg")}
         alt="Athlètes ACBB prenant le départ d'une course"
         width="1718"
         height="1145"
@@ -160,7 +161,7 @@ const featuredAnnouncement = activeAnnouncements.find(
   <section class="section-space" aria-labelledby="events-heading">
     <div class="site-container grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
       <img
-        src="/images/events/acbb-event-athletes.webp"
+        src={sitePath("/images/events/acbb-event-athletes.webp")}
         alt="Athlètes vêtus aux couleurs de l'ACBB lors d'un événement"
         width="720"
         height="480"
@@ -181,7 +182,7 @@ const featuredAnnouncement = activeAnnouncements.find(
             ))}
           </div>
         )}
-        <a class="button button--primary mt-8" href="/evenements/">
+        <a class="button button--primary mt-8" href={sitePath("/evenements/")}>
           Voir les événements ACBB
         </a>
       </div>

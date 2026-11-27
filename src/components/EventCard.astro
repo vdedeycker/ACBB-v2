@@ -1,6 +1,7 @@
 ---
 import type { AcbbEvent } from "../data/events";
 import { getEventStatus } from "../data/events";
+import { sitePath } from "../utils/sitePath";
 
 interface Props {
   event: AcbbEvent;
@@ -40,7 +41,7 @@ const statusLabel =
       {event.location.name} — {event.location.address}, {event.location.municipality}
     </p>
     <p class="event-card-description">{event.description}</p>
-    <a class="button button--primary mt-5" href={`/evenements/${event.slug}/`}>
+    <a class="button button--primary mt-5" href={sitePath(`/evenements/${event.slug}/`)}>
       Voir l'événement
     </a>
   </div>

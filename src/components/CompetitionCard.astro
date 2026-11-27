@@ -1,5 +1,6 @@
 ---
 import type { Competition } from "../data/competitions";
+import { sitePath } from "../utils/sitePath";
 
 interface Props {
   competition: Competition;
@@ -60,7 +61,7 @@ const formattedDate = new Intl.DateTimeFormat("fr-BE", {
         {competition.organizerUrl && (
           <a
             class="button button--primary"
-            href={competition.organizerUrl}
+            href={sitePath(competition.organizerUrl)}
             rel="noopener"
             target="_blank"
           >
@@ -68,7 +69,7 @@ const formattedDate = new Intl.DateTimeFormat("fr-BE", {
           </a>
         )}
         {competition.informationHref && (
-          <a class="button button--primary" href={competition.informationHref}>
+          <a class="button button--primary" href={sitePath(competition.informationHref)}>
             Consulter les informations officielles
           </a>
         )}
